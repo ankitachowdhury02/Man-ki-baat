@@ -1,111 +1,205 @@
+/* =========================================================
+   MAN KI BAAT - OFFICIAL BRAND COLOR PALETTE & DESIGN SYSTEM
+   From Official Brand Guide PDF:
+   - Primary Blue:   #3055B2 (Headers, navigation, primary buttons & links)
+   - Accent Green:   #20A878 (Secondary actions, highlights & positive states)
+   - White:          #FFFFFF (Main page background, cards & clean content)
+   - Light Blue:     #F0F5FF (Alternate sections, banners & subtle highlights)
+   - Dark Slate:     #1F2937 (Headings, body copy, hero & footer backgrounds)
+   - Secondary Gray: #6B7280 (Descriptions, labels, secondary text)
+========================================================= */
+
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  /* Fonts (Luxury layout preserved from Homeopathy House) */
+  --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  /* Official Brand Colors */
+  --primary-blue: #3055B2;
+  --primary-blue-hover: #254493;
+  --primary-blue-light: #EBF1FD;
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --accent-green: #20A878;
+  --accent-green-hover: #188E65;
+  --accent-green-light: #E8F7F1;
 
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+  --white: #FFFFFF;
+  --light-blue: #F0F5FF;
+  --light-blue-surface: #F8FAFD;
+
+  --dark-slate: #1F2937;
+  --dark-slate-deep: #16202C;
+
+  --secondary-gray: #6B7280;
+  --border-color: #E2E8F4;
+  --border-subtle: #EDF2FA;
+
+  /* Semantic Variables */
+  --background: var(--white);
+  --surface-alt: var(--light-blue);
+  --text-heading: var(--dark-slate);
+  --text-body: var(--secondary-gray);
+
+  /* Shadows based on Brand Colors */
+  --shadow-card: 0 4px 20px rgba(48, 85, 178, 0.06), 0 1px 3px rgba(48, 85, 178, 0.04);
+  --shadow-soft: 0 12px 36px -8px rgba(48, 85, 178, 0.16);
+  --shadow-blue: 0 8px 24px -6px rgba(48, 85, 178, 0.35);
+  --shadow-green: 0 8px 24px -6px rgba(32, 168, 120, 0.35);
+
+  /* Radii */
+  --radius: 0.875rem;
+  --radius-2xl: 1.5rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
+/* Global Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
+  width: 100%;
+  min-height: 100vh;
   margin: 0;
+  padding: 0;
+  background-color: var(--white);
+  color: var(--dark-slate);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 #root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
+  width: 100%;
+  overflow-x: hidden;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: var(--dark-slate);
 }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
+img, video, svg {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+/* Common Container */
+.container {
+  width: 100%;
+  max-width: 1320px;
+  margin-inline: auto;
+  padding-inline: 28px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-inline: 18px;
   }
 }
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
-  margin: 0;
-}
 
-code,
-.counter {
-  font-family: var(--mono);
+/* Eyebrows with Brand Accent Line */
+.eyebrow {
+  font-family: var(--font-sans);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent-green);
+  font-size: 0.75rem;
+  font-weight: 600;
   display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+  align-items: center;
+  gap: 12px;
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+.brand-rule,
+.gold-rule {
+  display: inline-block;
+  width: 2.5rem;
+  height: 2px;
+  background-color: var(--accent-green);
+  vertical-align: middle;
+  flex-shrink: 0;
+  border-radius: 2px;
+}
+
+/* Luxury Card with Brand Palette */
+.luxe-card {
+  background-color: var(--white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-card);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.3s ease;
+}
+
+.luxe-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-soft);
+  border-color: var(--primary-blue);
+}
+
+/* Subtle Pulsing CTA Glow for Accent Green button */
+@keyframes premium-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(32, 168, 120, 0.45), 0 8px 22px -6px rgba(32, 168, 120, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(32, 168, 120, 0), 0 14px 30px -6px rgba(32, 168, 120, 0.5);
+  }
+}
+
+@keyframes gentle-scale {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+.cta-glow {
+  animation: 2.4s ease-in-out infinite premium-glow, 4s ease-in-out infinite gentle-scale;
+}
+
+/* Fade Up Keyframe */
+@keyframes fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: 0.8s cubic-bezier(0.16, 1, 0.3, 1) both fade-up;
 }

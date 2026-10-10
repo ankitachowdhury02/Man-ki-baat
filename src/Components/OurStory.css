@@ -1,0 +1,179 @@
+/* =========================================================
+   MAN KI BAAT - OUR STORY / ABOUT SECTION
+   Official Brand Palette:
+   - Primary Blue:   #3055B2 (Card titles, hover borders)
+   - Accent Green:   #20A878 (Eyebrow, heading accent, top bar)
+   - White:          #FFFFFF (Cards background)
+   - Light Blue:     #F0F5FF (Alternate section background)
+   - Dark Slate:     #1F2937 (Main section heading)
+   - Secondary Gray: #6B7280 (Descriptions, card copy)
+========================================================= */
+
+.our-story-section {
+  width: 100%;
+  padding: 85px 0 95px;
+  background-color: var(--light-blue);
+  color: var(--dark-slate);
+  font-family: var(--font-sans);
+  box-sizing: border-box;
+}
+
+.our-story-container {
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 28px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.story-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 0 0 20px;
+  color: var(--accent-green);
+  font-family: var(--font-sans);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+}
+
+.story-eyebrow span {
+  width: 40px;
+  height: 2px;
+  background-color: var(--accent-green);
+  display: inline-block;
+  border-radius: 2px;
+}
+
+.story-heading {
+  margin: 0 auto 20px;
+  color: var(--dark-slate);
+  font-family: var(--font-display);
+  font-size: clamp(38px, 4.4vw, 58px);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+}
+
+.story-heading span {
+  display: block;
+  color: var(--accent-green);
+  font-style: italic;
+  font-weight: 400;
+  margin-top: 4px;
+}
+
+.story-description {
+  max-width: 780px;
+  margin: 0 auto 55px;
+  color: var(--secondary-gray);
+  font-size: 15.5px;
+  line-height: 1.85;
+}
+
+/* 4-Card Principles Grid */
+.story-principles {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+  text-align: left;
+}
+
+.story-principle-card {
+  min-height: 175px;
+  padding: 32px 26px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-2xl);
+  background-color: var(--white);
+  box-shadow: var(--shadow-card);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease,
+    box-shadow 0.35s ease,
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.story-principle-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-blue) 0%, var(--accent-green) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.story-principle-card:hover {
+  border-color: var(--primary-blue);
+  box-shadow: 0 14px 38px -10px rgba(48, 85, 178, 0.16);
+  transform: translateY(-6px);
+}
+
+.story-principle-card:hover::before {
+  opacity: 1;
+}
+
+.story-principle-card h3 {
+  margin: 0 0 14px;
+  color: var(--primary-blue);
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.story-principle-card p {
+  margin: 0;
+  color: var(--secondary-gray);
+  font-size: 13.5px;
+  line-height: 1.75;
+}
+
+/* Tablet */
+@media (max-width: 1060px) {
+  .story-principles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .our-story-section {
+    padding: 60px 0;
+  }
+
+  .our-story-container {
+    padding: 0 18px;
+  }
+
+  .story-heading {
+    font-size: 34px;
+  }
+
+  .story-description {
+    margin-bottom: 35px;
+    font-size: 14.5px;
+  }
+
+  .story-principles {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .story-principle-card {
+    padding: 26px 20px;
+    min-height: auto;
+  }
+}

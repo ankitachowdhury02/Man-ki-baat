@@ -1,0 +1,246 @@
+/* =========================================================
+   MAN KI BAAT - FOOTER STYLING
+   Official Brand Palette:
+   - Footer Background: #1F2937 (Dark Slate)
+   - Primary CTA:       #3055B2 (Appointment button)
+   - Accent Green:      #20A878 (Underlines, contact labels, hovers)
+   - Text Copy:         #FFFFFF / #D1D5DB
+   - Muted:             #9CA3AF
+========================================================= */
+
+.site-footer {
+  width: 100%;
+  background-color: var(--dark-slate);
+  color: var(--white);
+  font-family: var(--font-sans);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  box-sizing: border-box;
+}
+
+.footer-container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 75px 28px 55px;
+  display: grid;
+  grid-template-columns: 1.4fr 0.9fr 1.1fr 1.2fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* =========================
+   BRAND
+========================= */
+
+.footer-logo-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  margin-bottom: 20px;
+}
+
+.footer-logo {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  background-color: var(--white);
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+}
+
+.footer-brand-name {
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.footer-description {
+  color: #D1D5DB;
+  font-size: 14px;
+  line-height: 1.85;
+  margin: 0;
+  max-width: 340px;
+}
+
+/* =========================
+   SECTION HEADINGS
+========================= */
+
+.footer-links h3,
+.footer-contact h3 {
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  margin: 0 0 22px;
+  padding-bottom: 12px;
+  position: relative;
+}
+
+.footer-links h3::after,
+.footer-contact h3::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 36px;
+  height: 2px;
+  background-color: var(--accent-green);
+  border-radius: 2px;
+}
+
+/* =========================
+   FOOTER LINKS
+========================= */
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer-links a {
+  color: #D1D5DB;
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 12px;
+  transition: color 0.2s ease, transform 0.2s ease;
+  display: inline-block;
+}
+
+.footer-links a:hover,
+.footer-contact a:not(.footer-contact-button):hover,
+.footer-back-top:hover {
+  color: var(--accent-green);
+  transform: translateX(2px);
+}
+
+/* =========================
+   CONTACT DETAILS
+========================= */
+
+.footer-contact p {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0 0 16px;
+}
+
+.footer-contact strong {
+  color: var(--accent-green);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+.footer-contact p span,
+.footer-contact p a {
+  color: #D1D5DB;
+  font-size: 14px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.footer-contact p a {
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+/* =========================
+   APPOINTMENT BUTTON (Primary CTA Button from guide: #3055B2)
+========================= */
+
+.footer-contact-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 44px;
+  margin-top: 10px;
+  padding: 0 24px;
+  border-radius: 9999px;
+  background-color: var(--primary-blue);
+  border: 1px solid var(--primary-blue);
+  color: var(--white);
+  text-decoration: none;
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 15px rgba(48, 85, 178, 0.35);
+}
+
+.footer-contact-button:hover {
+  background-color: var(--primary-blue-hover);
+  border-color: var(--primary-blue-hover);
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(48, 85, 178, 0.45);
+}
+
+/* =========================
+   BOTTOM BAR
+========================= */
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 22px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  box-sizing: border-box;
+}
+
+.footer-bottom p {
+  color: #9CA3AF;
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.footer-back-top {
+  color: var(--accent-green);
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.footer-back-top:hover {
+  color: var(--white);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1060px) {
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+    padding: 60px 24px 45px;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 50px 18px 40px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px 18px;
+    gap: 12px;
+  }
+}
