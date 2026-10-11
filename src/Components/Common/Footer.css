@@ -205,6 +205,18 @@
   margin: 0;
 }
 
+.footer-wass-link {
+  color: var(--accent-green);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-wass-link:hover {
+  color: var(--white);
+  text-decoration: underline;
+}
+
 .footer-back-top {
   color: var(--accent-green);
   font-size: 13px;

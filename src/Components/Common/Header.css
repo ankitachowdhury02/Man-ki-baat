@@ -1,13 +1,4 @@
-/* =========================================================
-   MAN KI BAAT - HEADER STYLING
-   Official Brand Palette:
-   - Primary Blue:   #3055B2 (Titles, nav active/hover, call circle)
-   - Accent Green:   #20A878 (Book CTA button)
-   - White:          #FFFFFF (Header background)
-   - Light Blue:     #F0F5FF (Call Us pill background)
-   - Dark Slate:     #1F2937 (Nav links, phone number)
-   - Secondary Gray: #6B7280 (Tagline, call label)
-========================================================= */
+
 
 .site-header {
   position: sticky;
@@ -37,9 +28,7 @@
   gap: 20px;
 }
 
-/* =========================================================
-   LEFT: BRAND & LOGO
-========================================================= */
+/*BRAND & LOGO*/
 
 .header-brand {
   display: flex;
@@ -88,9 +77,7 @@
   text-transform: uppercase;
 }
 
-/* =========================================================
-   CENTER: NAVIGATION
-========================================================= */
+/*CENTER: NAVIGATION*/
 
 .header-navigation {
   display: flex;
@@ -134,9 +121,7 @@
   display: none;
 }
 
-/* =========================================================
-   RIGHT: DESKTOP ACTIONS (CALL + BOOK)
-========================================================= */
+/*(Call + Book) er jnno*/
 
 .header-desktop-actions {
   display: flex;
@@ -145,7 +130,7 @@
   flex-shrink: 0;
 }
 
-/* Call Us Now Pill Button */
+/* Call Us Now Pill Button er jnno */
 .header-call-btn {
   display: inline-flex;
   align-items: center;
@@ -196,7 +181,7 @@
   letter-spacing: 0.2px;
 }
 
-/* Book Pill Button (Secondary CTA / Accent from PDF Guide: #20A878) */
+/* Book Pill Button er jnno */
 .header-book-btn {
   display: inline-flex;
   align-items: center;
@@ -226,9 +211,7 @@
   box-shadow: 0 6px 20px rgba(32, 168, 120, 0.45);
 }
 
-/* =========================================================
-   MOBILE MENU TOGGLE
-========================================================= */
+/* Mobile Menu Toggle Responsive e*/
 
 .mobile-menu-toggle {
   display: none;
@@ -250,9 +233,7 @@
   border-color: var(--primary-blue);
 }
 
-/* =========================================================
-   RESPONSIVE DESIGN
-========================================================= */
+/* Responsive er jnno*/
 
 @media (max-width: 1120px) {
   .header-container {

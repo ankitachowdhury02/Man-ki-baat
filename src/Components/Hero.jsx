@@ -1,6 +1,10 @@
 
 import { useState, useEffect } from "react";
 import "./Hero.css";
+import heroMentalHealth from "../assets/hero-mental-health.jpg";
+import heroChildCounselling from "../assets/hero-child-counselling.jpg";
+import heroWellness from "../assets/hero-wellness.jpg";
+import heroCounselling from "../assets/hero-counselling.jpg";
 
 const slides = [
   {
@@ -17,7 +21,7 @@ const slides = [
     shortText: "A supportive space for mental wellness and personal growth.",
     description:
       "Discover compassionate counselling and guidance for children, adolescents and families. We aim to create a safe, understanding environment where every individual feels heard, respected and supported.",
-    image: "/images/hero-mental-health.jpg",
+    image: heroMentalHealth,
   },
   {
     eyebrow: "CHILD & ADOLESCENT WELLNESS",
@@ -33,7 +37,7 @@ const slides = [
     shortText: "Supporting children, adolescents and their families.",
     description:
       "Explore a supportive approach to child development, emotional well-being and family guidance, with a focus on listening, understanding and individual needs.",
-    image: "/images/hero-child-counselling.jpg",
+    image: heroChildCounselling,
   },
   {
     eyebrow: "YOUR MENTAL WELLNESS MATTERS",
@@ -49,7 +53,7 @@ const slides = [
     shortText: "Your feelings matter. Your story matters.",
     description:
       "Find space to express your concerns, explore your feelings and learn about counselling options in a respectful and supportive environment.",
-    image: "/images/hero-wellness.jpg",
+    image: heroWellness,
   },
   {
     eyebrow: "MAN KI BAAT COUNSELLING SERVICES",
@@ -65,7 +69,7 @@ const slides = [
     shortText: "Guidance and support for individuals and families.",
     description:
       "Connect with Man Ki Baat to learn more about personal counselling, relationship guidance, stress management and other wellness services.",
-    image: "/images/hero-counselling.jpg",
+    image: heroCounselling,
   },
 ];
 

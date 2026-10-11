@@ -45,7 +45,7 @@ const navLinks = [
           </div>
         </a>
 
-        {/* Center Navigation for Desktop */}
+        
         <nav
           className={`header-navigation ${
             menuOpen ? "navigation-open" : ""
@@ -90,7 +90,7 @@ const navLinks = [
           </div>
         </nav>
 
-        {/* Desktop Actions */}
+        
         <div className="header-desktop-actions">
           <a
             href={`tel:${phoneNumber.replace(/\s+/g, "")}`}
@@ -112,7 +112,7 @@ const navLinks = [
           </a>
         </div>
 
-        {/* Mobile Menu Toggle Button */}
+        {/* Toggle Button For Mobile Menu */}
         <button
           type="button"
           className="mobile-menu-toggle"

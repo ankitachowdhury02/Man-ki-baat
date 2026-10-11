@@ -27,7 +27,7 @@ function Footer() {
           </p>
         </div>
 
-        {/* Quick Links */}
+        {/* Links Section */}
         <div className="footer-links">
           <h3>Quick Links</h3>
           <a href="#home">Home</a>
@@ -37,7 +37,7 @@ function Footer() {
           <a href="#contact">Contact Us</a>
         </div>
 
-        {/* Our Services */}
+        {/* Our Services section */}
         <div className="footer-links">
           <h3>Our Services</h3>
           <a href="#services">Personal Counselling</a>
@@ -82,7 +82,15 @@ function Footer() {
       {/* Bottom Bar */}
       <div className="footer-bottom">
         <p>
-          © {currentYear} Man Ki Baat. All rights reserved.
+          © {currentYear} Man Ki Baat. All rights reserved &amp; design and developed by{" "}
+          <a
+            href="https://webappssoft.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="footer-wass-link"
+          >
+            WASS
+          </a>
         </p>
 
         <a href="#home" className="footer-back-top">

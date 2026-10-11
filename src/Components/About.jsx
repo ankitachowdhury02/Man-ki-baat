@@ -60,12 +60,12 @@ function About() {
     <main className="about-page">
       <section className="about-doctor-section">
         <div className="about-doctor-layout">
-          {/* Left image */}
+          {/* Image */}
           <div className="about-doctor-visual">
             <img src={logo} alt="Man Ki Baat wellness society" />
           </div>
 
-          {/* Right content */}
+          {/* Content */}
           <div className="about-doctor-information">
             <div className="about-eyebrow">
               <span />
@@ -85,7 +85,6 @@ function About() {
               empathy, understanding and personalised guidance.
             </p>
 
-            {/* Six information cards */}
             <div className="about-highlight-grid">
               {highlights.map((item) => {
                 const Icon = item.icon;
@@ -108,7 +107,7 @@ function About() {
               })}
             </div>
 
-            {/* Qualifications and experience */}
+            {/* Qualifications and Experience Cards*/}
             <div className="about-credentials">
               {credentials.map((credential) => (
                 <div className="credential-item" key={credential}>

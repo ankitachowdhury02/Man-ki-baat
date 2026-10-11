@@ -1,0 +1,314 @@
+
+/* ==================================
+   MAN KI BAAT - SPECIALISATIONS
+   ================================== */
+
+.specialisations-section {
+  --spec-blue: #3055b2;
+  --spec-green: #20a878;
+  --spec-light: #f0f5ff;
+  --spec-dark: #1f2937;
+  --spec-gray: #6b7280;
+
+  padding: 75px 7% 90px;
+  background: #f7f9fc;
+  color: var(--spec-dark);
+}
+
+.specialisations-container {
+  width: 100%;
+  max-width: 1550px;
+  margin: 0 auto;
+}
+
+/* Heading */
+
+.specialisations-heading {
+  max-width: 900px;
+  margin: 0 auto 55px;
+  text-align: center;
+}
+
+.specialisations-eyebrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 13px;
+
+  margin-bottom: 24px;
+
+  color: var(--spec-blue);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.specialisations-eyebrow span {
+  width: 38px;
+  height: 1px;
+  background: var(--spec-green);
+}
+
+.specialisations-heading h2 {
+  margin: 0;
+
+  color: var(--spec-dark);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(34px, 4vw, 56px);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -1px;
+}
+
+.specialisations-heading h2 span {
+  display: block;
+  margin-top: 4px;
+  color: var(--spec-blue);
+  font-style: italic;
+}
+
+.specialisations-heading > p {
+  max-width: 720px;
+  margin: 22px auto 0;
+
+  color: var(--spec-gray);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+/* Grid */
+
+.specialisations-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+/* Individual card */
+
+.specialisation-card {
+  position: relative;
+  isolation: isolate;
+
+  min-width: 0;
+  min-height: 255px;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 28px 25px;
+
+  border-radius: 24px;
+  background-color: var(--spec-blue);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  box-shadow: 0 8px 22px rgba(31, 41, 55, 0.07);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.specialisation-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 34px rgba(31, 41, 55, 0.16);
+}
+
+/* Dark image overlay */
+
+.specialisation-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  background: linear-gradient(
+    180deg,
+    rgba(20, 30, 48, 0.12) 0%,
+    rgba(20, 30, 48, 0.48) 45%,
+    rgba(20, 30, 48, 0.88) 100%
+  );
+
+  transition: background 0.3s ease;
+}
+
+.specialisation-card:hover .specialisation-overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(31, 41, 55, 0.22) 0%,
+    rgba(31, 41, 55, 0.62) 50%,
+    rgba(31, 41, 55, 0.93) 100%
+  );
+}
+
+/* Content */
+
+.specialisation-content {
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+  margin-top: 22px;
+
+  text-align: center;
+  color: #ffffff;
+}
+
+.specialisation-content h3 {
+  max-width: 390px;
+  margin: 0 auto 13px;
+
+  color: #ffffff;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(20px, 1.65vw, 25px);
+  font-weight: 500;
+  line-height: 1.35;
+  text-wrap: balance;
+}
+
+.specialisation-content p {
+  max-width: 390px;
+  margin: 0 auto 18px;
+
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.specialisation-explore {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  padding: 4px 0;
+
+  color: #b8f0d8;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+
+  text-decoration: none;
+
+  transition:
+    color 0.2s ease,
+    gap 0.2s ease;
+}
+
+.specialisation-explore:hover {
+  gap: 14px;
+  color: #ffffff;
+}
+
+.specialisation-explore span {
+  font-size: 18px;
+}
+
+/* Fallback if an image has not been added yet */
+
+.specialisation-image-fallback {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+  background: linear-gradient(135deg, var(--spec-blue), #1b326c);
+
+  color: rgba(255, 255, 255, 0.16);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 25px;
+  text-align: center;
+}
+
+/* ==================================
+   TABLET
+   ================================== */
+
+@media (max-width: 1000px) {
+  .specialisations-section {
+    padding: 65px 5%;
+  }
+
+  .specialisations-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .specialisation-card {
+    min-height: 245px;
+  }
+}
+
+/* ==================================
+   MOBILE
+   ================================== */
+
+@media (max-width: 600px) {
+  .specialisations-section {
+    padding: 48px 18px 60px;
+  }
+
+  .specialisations-heading {
+    margin-bottom: 32px;
+  }
+
+  .specialisations-eyebrow {
+    margin-bottom: 18px;
+    font-size: 10px;
+    letter-spacing: 2px;
+  }
+
+  .specialisations-heading h2 {
+    font-size: clamp(29px, 8vw, 38px);
+    letter-spacing: -0.5px;
+  }
+
+  .specialisations-heading > p {
+    margin-top: 16px;
+    font-size: 13px;
+  }
+
+  .specialisations-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .specialisation-card {
+    min-height: 245px;
+    padding: 25px 20px;
+    border-radius: 20px;
+  }
+
+  .specialisation-content h3 {
+    font-size: 23px;
+  }
+
+  .specialisation-content p {
+    font-size: 13px;
+  }
+}
+
+/* Very small screens */
+
+@media (max-width: 360px) {
+  .specialisations-section {
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+
+  .specialisation-card {
+    min-height: 230px;
+    padding: 22px 16px;
+  }
+
+  .specialisation-content h3 {
+    font-size: 21px;
+  }
+}
