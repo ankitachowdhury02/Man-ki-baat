@@ -6,13 +6,11 @@ import {
   Phone,
   Mail,
   Globe,
-  CalendarDays,
   MessageCircle,
   Asterisk,
 } from "lucide-react";
 import "./Contact.css";
 
-// Existing Man Ki Baat WhatsApp number
 const WHATSAPP_NUMBER = "918697404639";
 
 const initialForm = {
@@ -27,7 +25,6 @@ const initialForm = {
   message: "",
 };
 
-// Local date in YYYY-MM-DD format
 const getToday = () => {
   const date = new Date();
   const year = date.getFullYear();
@@ -37,10 +34,32 @@ const getToday = () => {
   return `${year}-${month}-${day}`;
 };
 
+function RequiredLabel({ htmlFor, children }) {
+  return (
+    <div className="contact-label-row">
+      <label htmlFor={htmlFor}>{children}</label>
+      <Asterisk
+        className="required-icon"
+        size={14}
+        aria-hidden="true"
+      />
+    </div>
+  );
+}
+
+function FieldError({ message }) {
+  if (!message) return null;
+
+  return (
+    <p className="contact-field-error" role="alert">
+      {message}
+    </p>
+  );
+}
+
 function Contact() {
   const [formData, setFormData] = useState(initialForm);
-  const [notice, setNotice] = useState("");
-
+  const [errors, setErrors] = useState({});
   const today = getToday();
 
   const handleChange = (event) => {
@@ -51,45 +70,97 @@ function Contact() {
       [name]: value,
     }));
 
-    setNotice("");
+    // Remove this field's error as the user edits it.
+    setErrors((previous) => ({
+      ...previous,
+      [name]: "",
+    }));
   };
-
-  const RequiredLabel = ({ htmlFor, children }) => (
-    <div className="contact-label-row">
-      <label htmlFor={htmlFor}>{children}</label>
-      <Asterisk
-        className="required-icon"
-        size={14}
-        aria-hidden="true"
-      />
-    </div>
-  );
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setNotice("");
 
-    // Validate phone number
+    const requiredFields = [
+      { key: "fullName", label: "Full Name" },
+      { key: "phone", label: "Phone Number" },
+      { key: "email", label: "Email Address" },
+      { key: "concern", label: "Service / Area of Concern" },
+      { key: "country", label: "Country / Region" },
+      { key: "preferredDate", label: "Preferred Date" },
+      { key: "preferredTime", label: "Preferred Time" },
+      { key: "consultationType", label: "Consultation Type" },
+    ];
+
+    const newErrors = {};
+
+    // Check every mandatory field.
+    requiredFields.forEach(({ key, label }) => {
+      if (!String(formData[key] ?? "").trim()) {
+        newErrors[key] = `Please fill in your ${label}.`;
+      }
+    });
+
+    // Validate phone number.
     const phoneDigits = formData.phone.replace(/\D/g, "");
 
-    if (phoneDigits.length < 10 || phoneDigits.length > 15) {
-      setNotice("Please enter a valid phone number.");
+    if (
+      formData.phone.trim() &&
+      (phoneDigits.length < 10 || phoneDigits.length > 15)
+    ) {
+      newErrors.phone = "Please enter a valid Phone Number.";
+    }
+
+    // Validate email.
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (
+      formData.email.trim() &&
+      !emailPattern.test(formData.email.trim())
+    ) {
+      newErrors.email = "Please enter a valid Email Address.";
+    }
+
+    // Validate appointment date.
+    if (formData.preferredDate && formData.preferredDate < today) {
+      newErrors.preferredDate =
+        "Please choose today or a future date.";
+    }
+
+    setErrors(newErrors);
+
+    // Stop submission if any errors exist.
+    if (Object.keys(newErrors).length > 0) {
+      const firstInvalidField = requiredFields.find(
+        ({ key }) => newErrors[key]
+      );
+
+      if (firstInvalidField) {
+        requestAnimationFrame(() => {
+          const element = document.getElementById(
+            firstInvalidField.key
+          );
+
+          if (element) {
+            element.scrollIntoView({
+              behavior: "smooth",
+              block: "center",
+            });
+
+            element.focus({ preventScroll: true });
+          }
+        });
+      }
+
       return;
     }
 
-    // Validate preferred date
-    if (!formData.preferredDate || formData.preferredDate < today) {
-      setNotice("Please choose today or a future date.");
-      return;
-    }
-
-    // Prepare all appointment details for WhatsApp
-    const message = [
+    // Build the appointment message.
+    const whatsappMessage = [
       "NEW APPOINTMENT REQUEST",
       "Man Ki Baat - Child Development & Mental Health Wellness Society",
       "",
       `Full Name: ${formData.fullName.trim()}`,
-      `Phone Number: +91 ${formData.phone.trim()}`,
+      `Phone Number: ${formData.phone.trim()}`,
       `Email Address: ${formData.email.trim()}`,
       `Service / Area of Concern: ${formData.concern}`,
       `Country / Region: ${formData.country}`,
@@ -104,23 +175,30 @@ function Contact() {
     ].join("\n");
 
     const whatsappURL =
-      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+        whatsappMessage
+      )}`;
 
-    // Open WhatsApp with the prepared message
-    window.open(whatsappURL, "_blank", "noopener,noreferrer");
-
-    setNotice(
-      "WhatsApp has been opened with your appointment details. Please review the message and tap Send to submit your request."
+    // Open WhatsApp directly from the user's submit action.
+    const whatsappWindow = window.open(
+      whatsappURL,
+      "_blank",
+      "noopener,noreferrer"
     );
+
+    if (!whatsappWindow) {
+      // Fallback if the browser blocks the new window.
+      window.location.href = whatsappURL;
+    }
   };
 
   return (
     <main className="contact-page">
       <section className="contact-layout">
-        {/* Left side: Contact information */}
+        {/* Left: Contact information */}
         <div className="contact-intro">
           <div className="contact-eyebrow">
-            <span className="contact-eyebrow-line"></span>
+            <span className="contact-eyebrow-line" />
             <span>BOOK AN APPOINTMENT</span>
           </div>
 
@@ -199,7 +277,7 @@ function Contact() {
           </div>
         </div>
 
-        {/* Right side: Appointment form */}
+        {/* Right: Appointment form */}
         <div className="contact-form-card">
           <div className="contact-form-heading">
             <span>YOUR APPOINTMENT</span>
@@ -209,8 +287,9 @@ function Contact() {
             </p>
           </div>
 
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} noValidate>
             <div className="contact-form-grid">
+              {/* Full Name */}
               <div className="contact-field">
                 <RequiredLabel htmlFor="fullName">
                   Full Name
@@ -223,15 +302,29 @@ function Contact() {
                   value={formData.fullName}
                   onChange={handleChange}
                   autoComplete="name"
-                  required
+                  aria-invalid={Boolean(errors.fullName)}
+                  aria-describedby={
+                    errors.fullName ? "fullName-error" : undefined
+                  }
+                  className={errors.fullName ? "input-error" : ""}
                 />
+                {errors.fullName && (
+                  <p id="fullName-error" className="contact-field-error" role="alert">
+                    {errors.fullName}
+                  </p>
+                )}
               </div>
 
+              {/* Phone */}
               <div className="contact-field">
                 <RequiredLabel htmlFor="phone">
                   Phone Number
                 </RequiredLabel>
-                <div className="contact-phone-input">
+                <div
+                  className={`contact-phone-input ${
+                    errors.phone ? "input-error" : ""
+                  }`}
+                >
                   <span>IN +91</span>
                   <input
                     id="phone"
@@ -243,11 +336,16 @@ function Contact() {
                     autoComplete="tel-national"
                     inputMode="numeric"
                     maxLength={15}
-                    required
+                    aria-invalid={Boolean(errors.phone)}
+                    aria-describedby={
+                      errors.phone ? "phone-error" : undefined
+                    }
                   />
                 </div>
+                <FieldError message={errors.phone} />
               </div>
 
+              {/* Email */}
               <div className="contact-field contact-field-full">
                 <RequiredLabel htmlFor="email">
                   Email Address
@@ -260,10 +358,20 @@ function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   autoComplete="email"
-                  required
+                  aria-invalid={Boolean(errors.email)}
+                  aria-describedby={
+                    errors.email ? "email-error" : undefined
+                  }
+                  className={errors.email ? "input-error" : ""}
                 />
+                {errors.email && (
+                  <p id="email-error" className="contact-field-error" role="alert">
+                    {errors.email}
+                  </p>
+                )}
               </div>
 
+              {/* Concern */}
               <div className="contact-field contact-field-full">
                 <RequiredLabel htmlFor="concern">
                   Service / Area of Concern
@@ -273,39 +381,24 @@ function Contact() {
                   name="concern"
                   value={formData.concern}
                   onChange={handleChange}
-                  required
+                  aria-invalid={Boolean(errors.concern)}
+                  className={errors.concern ? "input-error" : ""}
                 >
                   <option value="">Select a service</option>
-                  <option value="Child Psychology">
-                    Child Psychology
-                  </option>
-                  <option value="Adolescent Psychology">
-                    Adolescent Psychology
-                  </option>
-                  <option value="Clinical Psychology">
-                    Clinical Psychology
-                  </option>
-                  <option value="Counselling Psychology">
-                    Counselling Psychology
-                  </option>
-                  <option value="Educational Psychology">
-                    Educational Psychology
-                  </option>
-                  <option value="Family Psychology">
-                    Family Psychology
-                  </option>
-                  <option value="Health Psychology">
-                    Health Psychology
-                  </option>
-                  <option value="Addiction Psychology">
-                    Addiction Psychology
-                  </option>
-                  <option value="Other">
-                    Other / Not sure yet
-                  </option>
+                  <option value="Child Psychology">Child Psychology</option>
+                  <option value="Adolescent Psychology">Adolescent Psychology</option>
+                  <option value="Clinical Psychology">Clinical Psychology</option>
+                  <option value="Counselling Psychology">Counselling Psychology</option>
+                  <option value="Educational Psychology">Educational Psychology</option>
+                  <option value="Family Psychology">Family Psychology</option>
+                  <option value="Health Psychology">Health Psychology</option>
+                  <option value="Addiction Psychology">Addiction Psychology</option>
+                  <option value="Other">Other / Not sure yet</option>
                 </select>
+                <FieldError message={errors.concern} />
               </div>
 
+              {/* Country */}
               <div className="contact-field contact-field-full">
                 <RequiredLabel htmlFor="country">
                   Country / Region
@@ -315,7 +408,8 @@ function Contact() {
                   name="country"
                   value={formData.country}
                   onChange={handleChange}
-                  required
+                  aria-invalid={Boolean(errors.country)}
+                  className={errors.country ? "input-error" : ""}
                 >
                   <option value="India">India</option>
                   <option value="Bangladesh">Bangladesh</option>
@@ -323,8 +417,10 @@ function Contact() {
                   <option value="Bhutan">Bhutan</option>
                   <option value="Other">Other</option>
                 </select>
+                <FieldError message={errors.country} />
               </div>
 
+              {/* Preferred Date */}
               <div className="contact-field">
                 <RequiredLabel htmlFor="preferredDate">
                   Preferred Date
@@ -336,10 +432,13 @@ function Contact() {
                   min={today}
                   value={formData.preferredDate}
                   onChange={handleChange}
-                  required
+                  aria-invalid={Boolean(errors.preferredDate)}
+                  className={errors.preferredDate ? "input-error" : ""}
                 />
+                <FieldError message={errors.preferredDate} />
               </div>
 
+              {/* Preferred Time */}
               <div className="contact-field">
                 <RequiredLabel htmlFor="preferredTime">
                   Preferred Time
@@ -349,15 +448,18 @@ function Contact() {
                   name="preferredTime"
                   value={formData.preferredTime}
                   onChange={handleChange}
-                  required
+                  aria-invalid={Boolean(errors.preferredTime)}
+                  className={errors.preferredTime ? "input-error" : ""}
                 >
                   <option value="">Select a time slot</option>
                   <option value="Morning">Morning</option>
                   <option value="Afternoon">Afternoon</option>
                   <option value="Evening">Evening</option>
                 </select>
+                <FieldError message={errors.preferredTime} />
               </div>
 
+              {/* Consultation Type */}
               <div className="contact-field contact-field-full">
                 <RequiredLabel htmlFor="consultationType">
                   Consultation Type
@@ -367,7 +469,10 @@ function Contact() {
                   name="consultationType"
                   value={formData.consultationType}
                   onChange={handleChange}
-                  required
+                  aria-invalid={Boolean(errors.consultationType)}
+                  className={
+                    errors.consultationType ? "input-error" : ""
+                  }
                 >
                   <option value="Online consultation">
                     Online Consultation
@@ -375,12 +480,12 @@ function Contact() {
                   <option value="In-person consultation">
                     In-person Consultation
                   </option>
-                  <option value="Need guidance">
-                    Need Guidance
-                  </option>
+                  <option value="Need guidance">Need Guidance</option>
                 </select>
+                <FieldError message={errors.consultationType} />
               </div>
 
+              {/* Optional Message */}
               <div className="contact-field contact-field-full">
                 <label htmlFor="message">
                   Additional Information (Optional)
@@ -396,20 +501,7 @@ function Contact() {
               </div>
             </div>
 
-            {notice && (
-              <div
-                className="contact-form-notice"
-                role="status"
-                aria-live="polite"
-              >
-                {notice}
-              </div>
-            )}
-
-            <button
-              className="contact-submit-button"
-              type="submit"
-            >
+            <button className="contact-submit-button" type="submit">
               <MessageCircle size={18} />
               <span>Request an Appointment</span>
             </button>
@@ -422,6 +514,7 @@ function Contact() {
         </div>
       </section>
 
+      {/* Floating Call Button */}
       <a
         className="contact-floating-call"
         href="tel:+918697404639"
