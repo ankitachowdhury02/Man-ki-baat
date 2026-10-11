@@ -1,4 +1,5 @@
 
+import { Link } from "react-router-dom";
 import "./Footer.css";
 import logo from "../../assets/logo.jpeg";
 
@@ -34,7 +35,7 @@ function Footer() {
           <a href="#about">About Us</a>
           <a href="#services">Our Services</a>
           <a href="#counsellor">Counsellor</a>
-          <a href="#contact">Contact Us</a>
+          <Link to="/contact">Contact Us</Link>
         </div>
 
         {/* Our Services section */}
@@ -73,9 +74,9 @@ function Footer() {
             </a>
           </p>
 
-          <a href="#contact" className="footer-contact-button">
+          <Link to="/contact" className="footer-contact-button">
             Book an Appointment
-          </a>
+          </Link>
         </div>
       </div>
 

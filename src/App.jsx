@@ -10,7 +10,7 @@ import About from "./Components/About";
 import Reviews from "./Components/Reviews";
 import Specialisations from "./Components/Specialisations";
 import SpecialisationDetails from "./Components/SpecialisationDetails";
-
+import Contact from "./Components/Contact";
 function Home() {
   return (
     <>
@@ -33,6 +33,7 @@ function App() {
 
         {/* About Page */}
         <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
 
         {/* All Specialisations */}
         <Route
