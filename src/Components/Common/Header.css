@@ -1,20 +1,31 @@
 
+/* =========================================
+   MAN KI BAAT - HEADER
+   Fixed Header + Responsive Mobile Menu
+========================================= */
 
 .site-header {
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
+  right: 0;
   width: 100%;
-  z-index: 1000;
-  background-color: rgba(255, 255, 255, 0.96);
+  z-index: 10000;
+
+  background-color: rgba(255, 255, 255, 0.97);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+
   border-top: 3px solid var(--primary-blue);
   border-bottom: 1px solid var(--border-color);
-  box-shadow: 0 4px 18px rgba(48, 85, 178, 0.05);
+
+  box-shadow: 0 4px 18px rgba(48, 85, 178, 0.08);
+
   font-family: var(--font-sans);
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
+
+/* Header Container */
 
 .header-container {
   width: 100%;
@@ -22,18 +33,20 @@
   min-height: 78px;
   margin: 0 auto;
   padding: 12px 28px;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
 }
 
-/*BRAND & LOGO*/
+/* Brand & Logo */
 
 .header-brand {
   display: flex;
   align-items: center;
   gap: 12px;
+
   text-decoration: none;
   min-width: 0;
   flex-shrink: 0;
@@ -42,9 +55,11 @@
 .header-logo {
   width: 48px;
   height: 48px;
+
   border-radius: 10px;
   object-fit: cover;
   flex-shrink: 0;
+
   box-shadow: 0 2px 8px rgba(48, 85, 178, 0.12);
   border: 1px solid var(--border-color);
   background: var(--white);
@@ -77,7 +92,7 @@
   text-transform: uppercase;
 }
 
-/*CENTER: NAVIGATION*/
+/* Desktop Navigation */
 
 .header-navigation {
   display: flex;
@@ -89,10 +104,13 @@
   color: var(--dark-slate);
   font-size: 14.5px;
   font-weight: 500;
+
   text-decoration: none;
   white-space: nowrap;
+
   padding: 6px 0;
   position: relative;
+
   transition: color 0.2s ease;
 }
 
@@ -106,22 +124,28 @@
   position: absolute;
   bottom: 0;
   left: 0;
+
   width: 0;
   height: 2px;
+
   background-color: var(--primary-blue);
   border-radius: 2px;
+
   transition: width 0.25s ease;
 }
 
-.header-nav-link:hover::after {
+.header-nav-link:hover::after,
+.header-nav-link:focus-visible::after {
   width: 100%;
 }
+
+/* Mobile Actions - Hidden on Desktop */
 
 .mobile-header-actions {
   display: none;
 }
 
-/*(Call + Book) er jnno*/
+/* Desktop Call & Book Buttons */
 
 .header-desktop-actions {
   display: flex;
@@ -130,39 +154,51 @@
   flex-shrink: 0;
 }
 
-/* Call Us Now Pill Button er jnno */
+/* Call Button */
+
 .header-call-btn {
   display: inline-flex;
   align-items: center;
   gap: 9px;
+
   background-color: var(--light-blue);
   border: 1px solid #D2E1FA;
   border-radius: 9999px;
+
   padding: 5px 16px 5px 6px;
+
   text-decoration: none;
   cursor: pointer;
-  transition: all 0.25s ease;
   white-space: nowrap;
+
+  transition: all 0.25s ease;
+
   box-shadow: 0 2px 8px rgba(48, 85, 178, 0.08);
 }
 
 .header-call-btn:hover {
   background-color: #E3EDFE;
   border-color: var(--primary-blue);
+
   transform: translateY(-1px);
+
   box-shadow: 0 4px 14px rgba(48, 85, 178, 0.15);
 }
 
 .call-icon-circle {
   width: 30px;
   height: 30px;
+
   border-radius: 50%;
+
   background-color: var(--primary-blue);
   color: var(--white);
+
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+
   box-shadow: 0 2px 6px rgba(48, 85, 178, 0.25);
 }
 
@@ -181,25 +217,33 @@
   letter-spacing: 0.2px;
 }
 
-/* Book Pill Button er jnno */
+/* Book Button */
+
 .header-book-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 7px;
+
   min-height: 40px;
   padding: 8px 22px;
+
   background-color: var(--accent-green);
   color: var(--white);
+
   border: 1px solid var(--accent-green);
   border-radius: 9999px;
+
   font-size: 13.5px;
   font-weight: 600;
   letter-spacing: 0.3px;
+
   text-decoration: none;
   white-space: nowrap;
   cursor: pointer;
+
   transition: all 0.25s ease;
+
   box-shadow: var(--shadow-green);
 }
 
@@ -207,24 +251,32 @@
   background-color: var(--accent-green-hover);
   border-color: var(--accent-green-hover);
   color: var(--white);
+
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(32, 168, 120, 0.45);
+
+  box-shadow: 0 6px 20px rgba(32, 168, 120, 0.35);
 }
 
-/* Mobile Menu Toggle Responsive e*/
+/* Mobile Menu Toggle */
 
 .mobile-menu-toggle {
   display: none;
   align-items: center;
   justify-content: center;
+
   width: 42px;
   height: 42px;
   padding: 0;
+
   background-color: var(--light-blue);
   color: var(--primary-blue);
+
   border: 1px solid #D2E1FA;
   border-radius: 9999px;
+
   cursor: pointer;
+  flex-shrink: 0;
+
   transition: all 0.2s ease;
 }
 
@@ -233,7 +285,17 @@
   border-color: var(--primary-blue);
 }
 
-/* Responsive er jnno*/
+.mobile-menu-toggle:focus-visible,
+.header-book-btn:focus-visible,
+.header-call-btn:focus-visible,
+.header-nav-link:focus-visible {
+  outline: 2px solid var(--primary-blue);
+  outline-offset: 3px;
+}
+
+/* =========================================
+   LAPTOP & SMALL DESKTOP
+========================================= */
 
 @media (max-width: 1120px) {
   .header-container {
@@ -252,9 +314,24 @@
   .call-label {
     display: none;
   }
+
+  .header-book-btn {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
 }
 
+/* =========================================
+   TABLET & MOBILE NAVIGATION
+========================================= */
+
 @media (max-width: 980px) {
+  .header-container {
+    min-height: 72px;
+    padding: 10px 20px;
+    gap: 12px;
+  }
+
   .header-desktop-actions {
     display: none;
   }
@@ -265,35 +342,52 @@
 
   .header-navigation {
     display: none;
+
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
+
     width: 100%;
+    max-height: calc(100vh - 75px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+
     background-color: var(--white);
+
     border-top: 1px solid var(--border-color);
     border-bottom: 2px solid var(--primary-blue);
-    box-shadow: 0 16px 32px rgba(31, 41, 55, 0.1);
-    padding: 20px 24px 26px;
+
+    box-shadow: 0 16px 32px rgba(31, 41, 55, 0.12);
+
+    padding: 18px 24px 24px;
+
     flex-direction: column;
     align-items: stretch;
     gap: 6px;
+
     z-index: 999;
   }
 
   .header-navigation.navigation-open {
     display: flex;
-    animation: headerFadeDown 0.25s ease-out forwards;
+    animation: headerFadeDown 0.25s ease-out;
   }
 
   .header-nav-link {
+    display: block;
+
     padding: 12px 10px;
+
     font-size: 15px;
+    line-height: 1.5;
+
     border-bottom: 1px solid var(--border-subtle);
     border-radius: 6px;
   }
 
-  .header-nav-link:hover {
+  .header-nav-link:hover,
+  .header-nav-link:focus-visible {
     background-color: var(--light-blue);
     color: var(--primary-blue);
   }
@@ -302,17 +396,108 @@
     display: none;
   }
 
+  /* Mobile Call & Book Buttons */
+
   .mobile-header-actions {
     display: flex;
     flex-direction: column;
     gap: 12px;
+
     margin-top: 16px;
     padding-top: 8px;
   }
 
   .mobile-header-actions .header-call-btn {
+    display: flex;
     justify-content: center;
-    padding: 10px 16px;
+    align-items: center;
+
+    width: 100%;
+    min-height: 48px;
+
+    padding: 9px 16px;
+    white-space: normal;
+  }
+
+  .mobile-header-actions .call-label {
+    display: inline;
+  }
+
+  .mobile-header-actions .call-number {
+    font-size: 13px;
+  }
+
+  .mobile-header-actions .header-book-btn {
+    display: flex;
+    width: 100%;
+    min-height: 46px;
+  }
+}
+
+/* =========================================
+   MOBILE PHONE
+========================================= */
+
+@media (max-width: 520px) {
+  .header-container {
+    min-height: 68px;
+    padding: 9px 14px;
+    gap: 8px;
+  }
+
+  .header-brand {
+    gap: 9px;
+    flex: 1;
+  }
+
+  .header-logo {
+    width: 42px;
+    height: 42px;
+    border-radius: 8px;
+  }
+
+  .header-brand-text {
+    flex: 1;
+  }
+
+  .header-title {
+    font-size: 18px;
+    letter-spacing: 0.3px;
+  }
+
+  .header-tagline {
+    font-size: 7.5px;
+    letter-spacing: 0.5px;
+    line-height: 1.4;
+  }
+
+  .mobile-menu-toggle {
+    width: 40px;
+    height: 40px;
+  }
+
+  .header-navigation {
+    max-height: calc(100dvh - 68px);
+    padding: 14px 16px 20px;
+  }
+
+  .header-nav-link {
+    font-size: 14px;
+    padding: 11px 10px;
+  }
+
+  .mobile-header-actions .header-call-btn {
+    gap: 7px;
+    padding: 9px 10px;
+  }
+
+  .mobile-header-actions .call-label {
+    font-size: 9px;
+    letter-spacing: 0.4px;
+  }
+
+  .mobile-header-actions .call-number {
+    font-size: 12px;
   }
 
   .mobile-header-actions .header-book-btn {
@@ -320,33 +505,77 @@
   }
 }
 
-@media (max-width: 520px) {
+/* =========================================
+   EXTRA SMALL MOBILE
+========================================= */
+
+@media (max-width: 360px) {
   .header-container {
-    padding: 10px 16px;
-    min-height: 68px;
+    padding-left: 10px;
+    padding-right: 10px;
+    gap: 6px;
+  }
+
+  .header-brand {
+    gap: 7px;
   }
 
   .header-logo {
-    width: 42px;
-    height: 42px;
+    width: 36px;
+    height: 36px;
   }
 
   .header-title {
-    font-size: 19px;
+    font-size: 15px;
   }
 
   .header-tagline {
-    font-size: 8.5px;
+    font-size: 6.5px;
+    letter-spacing: 0.3px;
+  }
+
+  .mobile-menu-toggle {
+    width: 36px;
+    height: 36px;
+  }
+
+  .header-navigation {
+    padding-left: 12px;
+    padding-right: 12px;
   }
 }
+
+/* =========================================
+   HEADER MENU ANIMATION
+========================================= */
 
 @keyframes headerFadeDown {
   from {
     opacity: 0;
     transform: translateY(-8px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* =========================================
+   REDUCED MOTION ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header,
+  .header-nav-link,
+  .header-nav-link::after,
+  .header-call-btn,
+  .header-book-btn,
+  .mobile-menu-toggle {
+    transition: none;
+  }
+
+  .header-navigation.navigation-open {
+    animation: none;
   }
 }
