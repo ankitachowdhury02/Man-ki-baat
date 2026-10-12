@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import "./Hero.css";
 import heroMentalHealth from "../assets/hero-mental-health.jpg";
@@ -99,9 +98,7 @@ function Hero() {
       {slides.map((item, index) => (
         <div
           key={item.image}
-          className={`hero-slide ${
-            activeSlide === index ? "active" : ""
-          }`}
+          className={`hero-slide ${activeSlide === index ? "active" : ""}`}
           style={{ backgroundImage: `url("${item.image}")` }}
           aria-hidden="true"
         />
@@ -131,9 +128,7 @@ function Hero() {
           <button
             key={item.image}
             type="button"
-            className={`hero-dot ${
-              activeSlide === index ? "active-dot" : ""
-            }`}
+            className={`hero-dot ${activeSlide === index ? "active-dot" : ""}`}
             onClick={() => setActiveSlide(index)}
             aria-label={`Go to slide ${index + 1}`}
           />
