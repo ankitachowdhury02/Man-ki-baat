@@ -1,6 +1,3 @@
-
-
-
 .about-page {
   --mkb-blue: #3055b2;
   --mkb-green: #20a878;
@@ -20,11 +17,11 @@
   box-sizing: border-box;
 }
 
-/* Main section */
+/* Main counsellor section */
 
 .about-doctor-section {
   width: 100%;
-  padding: 75px 6.5%;
+  padding: 38px 6.5% 26px;
 }
 
 .about-doctor-layout {
@@ -34,23 +31,24 @@
 
   display: grid;
   grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
-  align-items: start;
-  gap: 45px;
+  align-items: stretch;
+  gap: 36px;
 }
 
 /* Left image */
 
 .about-doctor-visual {
   width: 100%;
-  min-height: 490px;
-  max-height: 680px;
+  height: 100%;
+  min-height: 380px;
+  max-height: 520px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   overflow: hidden;
-  border-radius: 26px;
+  border-radius: 24px;
   background: #f0f5ff;
   border: 1px solid #e0e8f8;
   box-shadow: 0 14px 34px -8px rgba(48, 85, 178, 0.14);
@@ -60,8 +58,8 @@
   display: block;
   width: 100%;
   height: 100%;
-  min-height: 490px;
-  max-height: 680px;
+  min-height: 380px;
+  max-height: 520px;
   padding: 0;
   object-fit: cover;
   object-position: center top;
@@ -78,7 +76,7 @@
   align-items: center;
   gap: 13px;
 
-  margin-bottom: 22px;
+  margin-bottom: 12px;
 
   color: var(--mkb-blue);
   font-size: 12px;
@@ -94,14 +92,14 @@
 }
 
 .about-doctor-information h1 {
-  margin: 0 0 22px;
+  margin: 0 0 14px;
 
   color: var(--mkb-dark);
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(34px, 3.2vw, 52px);
+  font-size: clamp(28px, 2.5vw, 40px);
   font-weight: 500;
-  line-height: 1.17;
-  letter-spacing: -1px;
+  line-height: 1.2;
+  letter-spacing: -0.8px;
 }
 
 .about-doctor-information h1 span {
@@ -109,11 +107,11 @@
 }
 
 .about-intro {
-  margin: 0 0 28px;
+  margin: 0 0 18px;
 
   color: var(--mkb-gray);
-  font-size: 15px;
-  line-height: 1.9;
+  font-size: 14.5px;
+  line-height: 1.68;
 }
 
 /* Six information cards */
@@ -121,24 +119,24 @@
 .about-highlight-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 15px;
+  gap: 10px;
 }
 
 .about-highlight-card {
   min-width: 0;
-  min-height: 112px;
+  min-height: auto;
 
   display: flex;
   align-items: flex-start;
-  gap: 14px;
+  gap: 12px;
 
-  padding: 20px 17px;
+  padding: 12px 14px;
 
   background: var(--mkb-white);
   border: 1px solid var(--mkb-border);
-  border-radius: 20px;
+  border-radius: 16px;
 
-  box-shadow: 0 8px 25px rgba(31, 41, 55, 0.035);
+  box-shadow: 0 6px 18px rgba(31, 41, 55, 0.03);
 
   transition:
     transform 0.25s ease,
@@ -153,9 +151,9 @@
 }
 
 .about-highlight-icon {
-  width: 45px;
-  height: 45px;
-  min-width: 45px;
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
 
   display: flex;
   align-items: center;
@@ -167,21 +165,21 @@
 }
 
 .about-highlight-card h3 {
-  margin: 2px 0 7px;
+  margin: 1px 0 4px;
 
   color: var(--mkb-dark);
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 500;
-  line-height: 1.4;
+  line-height: 1.35;
 }
 
 .about-highlight-card p {
   margin: 0;
 
   color: var(--mkb-gray);
-  font-size: 13px;
-  line-height: 1.65;
+  font-size: 12.5px;
+  line-height: 1.45;
 }
 
 /* Qualifications list */
@@ -189,149 +187,185 @@
 .about-credentials {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 17px 24px;
+  gap: 9px 20px;
 
-  margin-top: 30px;
-  padding-bottom: 5px;
+  margin-top: 18px;
+  padding-bottom: 0;
 }
 
 .credential-item {
   display: flex;
   align-items: flex-start;
-  gap: 11px;
+  gap: 9px;
 
   color: var(--mkb-dark);
-  font-size: 13px;
-  line-height: 1.75;
+  font-size: 12.5px;
+  line-height: 1.45;
 }
 
 .credential-item svg {
   flex-shrink: 0;
-  margin-top: 3px;
+  margin-top: 2px;
   color: var(--mkb-green);
 }
+
+/* Pull Photo Gallery slightly closer on About page to ensure heading visibility */
+.about-page .photo-gallery-section {
+  padding-top: 45px;
+}
+
 /* Responsive styles */
 
 /* TABLET */
 
 @media (max-width: 1100px) {
   .about-doctor-section {
-    padding: 60px 4%;
+    padding: 30px 4% 22px;
   }
 
   .about-doctor-layout {
-    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
-    gap: 28px;
+    grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+    gap: 24px;
   }
 
   .about-doctor-visual,
   .about-doctor-visual img {
-    min-height: 390px;
+    min-height: 340px;
+    max-height: 460px;
   }
 
   .about-highlight-card {
-    padding: 16px 13px;
+    padding: 10px 11px;
     gap: 10px;
   }
 
   .about-highlight-icon {
-    width: 38px;
-    height: 38px;
-    min-width: 38px;
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
   }
 
   .about-highlight-card h3 {
-    font-size: 15px;
+    font-size: 14px;
   }
 
   .about-highlight-card p {
-    font-size: 12px;
+    font-size: 11.5px;
   }
 
   .about-credentials {
-    gap: 15px;
+    gap: 8px 14px;
+    margin-top: 14px;
   }
 }
 
-/* MOBILE*/
+/* MOBILE */
 
 @media (max-width: 768px) {
   .about-doctor-section {
-    padding: 40px 20px;
+    padding: 24px 16px 18px;
+  }
+
+  .about-page .photo-gallery-section {
+    padding-top: 36px;
   }
 
   .about-doctor-layout {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 18px;
   }
 
   .about-doctor-visual {
-    min-height: 320px;
-    max-height: 440px;
-    border-radius: 20px;
+    min-height: 230px;
+    max-height: 280px;
+    border-radius: 18px;
   }
 
   .about-doctor-visual img {
-    min-height: 320px;
-    max-height: 440px;
+    min-height: 230px;
+    max-height: 280px;
     padding: 0;
     object-fit: cover;
     object-position: center top;
   }
 
   .about-eyebrow {
-    margin-bottom: 17px;
+    margin-bottom: 10px;
     font-size: 11px;
     letter-spacing: 2px;
   }
 
   .about-doctor-information h1 {
-    font-size: clamp(31px, 8vw, 42px);
+    font-size: clamp(24px, 6.5vw, 32px);
     letter-spacing: -0.5px;
+    margin-bottom: 10px;
   }
 
   .about-intro {
-    font-size: 14px;
-    line-height: 1.85;
+    font-size: 13.5px;
+    line-height: 1.6;
+    margin-bottom: 14px;
   }
 
   .about-highlight-grid {
-    grid-template-columns: 1fr;
-    gap: 12px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
   }
 
   .about-highlight-card {
     min-height: auto;
-    padding: 18px;
+    padding: 9px 10px;
+    gap: 8px;
+    border-radius: 12px;
+  }
+
+  .about-highlight-icon {
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
   }
 
   .about-highlight-card h3 {
-    font-size: 16px;
+    font-size: 13px;
+    margin: 0 0 2px;
   }
 
   .about-highlight-card p {
-    font-size: 13px;
+    font-size: 11px;
+    line-height: 1.35;
   }
 
   .about-credentials {
     grid-template-columns: 1fr;
-    gap: 13px;
-    margin-top: 25px;
+    gap: 7px;
+    margin-top: 14px;
+  }
+
+  .credential-item {
+    font-size: 12px;
+    line-height: 1.4;
   }
 }
 
-/* SMALL MOBILE*/
+/* SMALL MOBILE */
 
-@media (max-width: 380px) {
-  .about-doctor-section {
-    padding: 32px 15px;
-  }
-
-  .about-doctor-information h1 {
-    font-size: 29px;
+@media (max-width: 480px) {
+  .about-highlight-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
   }
 
   .about-highlight-card {
-    padding: 15px;
+    padding: 10px 12px;
+  }
+}
+
+@media (max-width: 380px) {
+  .about-doctor-section {
+    padding: 20px 12px 16px;
+  }
+
+  .about-doctor-information h1 {
+    font-size: 26px;
   }
 }
