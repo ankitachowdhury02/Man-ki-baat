@@ -24,9 +24,10 @@ function Footer() {
         {/* Links Section */}
         <div className="footer-links">
           <h3>Quick Links</h3>
-          <Link to="#home">Home</Link>
+          <Link to="/">Home</Link>
           <Link to="/about">About Us</Link>
-          <Link to="services">Our Services</Link>
+          <Link to="/services">Our Services</Link>
+          <Link to="/counsellor">Counsellor</Link>
           <Link to="/contact">Contact Us</Link>
         </div>
 

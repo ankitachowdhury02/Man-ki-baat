@@ -1,7 +1,13 @@
 
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Phone, Calendar, Menu, X } from "lucide-react";
+import {
+  Phone,
+  Calendar,
+  Menu,
+  X,
+} from "lucide-react";
+
 import "./Header.css";
 import logo from "../../assets/logo.jpeg";
 
@@ -13,15 +19,40 @@ function Header({ phoneNumber = "+91 8697404639" }) {
     { name: "Home", href: "/", type: "page" },
     { name: "About Us", href: "/about", type: "page" },
     { name: "Our Services", href: "/services", type: "page" },
+    { name: "Counsellor", href: "/counsellor", type: "page" },
     { name: "Contact", href: "/contact", type: "page" },
   ];
 
-  const closeMenu = () => setMenuOpen(false);
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
+
+  const isLinkActive = (href) => {
+    if (href === "/") {
+      return location.pathname === "/";
+    }
+
+    if (href === "/services") {
+      return (
+        location.pathname.startsWith("/services") ||
+        location.pathname.startsWith("/specialisations")
+      );
+    }
+
+    if (href === "/counsellor") {
+      return location.pathname.startsWith("/counsellor");
+    }
+
+    return location.pathname === href;
+  };
+
+  const formattedPhone = phoneNumber.replace(/[^\d+]/g, "");
+  const telephoneLink = `tel:${phoneNumber.replace(/\D/g, "")}`;
 
   return (
     <header className="site-header">
       <div className="header-container">
-        {/* Logo and brand */}
+        {/* Logo and Brand */}
         <Link
           to="/"
           className="header-brand"
@@ -35,7 +66,9 @@ function Header({ phoneNumber = "+91 8697404639" }) {
           />
 
           <div className="header-brand-text">
-            <span className="header-title">MAN KI BAAT</span>
+            <span className="header-title">
+              MAN KI BAAT
+            </span>
 
             <span className="header-tagline">
               Child Development &amp; Mental Health
@@ -45,28 +78,23 @@ function Header({ phoneNumber = "+91 8697404639" }) {
           </div>
         </Link>
 
-        {/* Navigation */}
+        {/* Main Navigation */}
         <nav
-          className={`header-navigation ${
-            menuOpen ? "navigation-open" : ""
-          }`}
+          id="main-navigation"
+          className={`header-navigation ${menuOpen ? "navigation-open" : ""
+            }`}
           aria-label="Main navigation"
         >
           {navLinks.map((link) => {
-            const isActive =
-              link.href === "/"
-                ? location.pathname === "/"
-                : location.pathname.startsWith(link.href) ||
-                  (link.href === "/services" &&
-                    location.pathname.startsWith("/specialisations"));
+            const active = isLinkActive(link.href);
 
             return (
               <Link
                 key={link.name}
                 to={link.href}
-                className={`header-nav-link ${
-                  isActive ? "header-nav-link-active" : ""
-                }`}
+                className={`header-nav-link ${active ? "header-nav-link-active" : ""
+                  }`}
+                aria-current={active ? "page" : undefined}
                 onClick={closeMenu}
               >
                 {link.name}
@@ -74,10 +102,10 @@ function Header({ phoneNumber = "+91 8697404639" }) {
             );
           })}
 
-          {/* Mobile actions */}
+          {/* Mobile Actions */}
           <div className="mobile-header-actions">
             <a
-              href={`tel:${phoneNumber.replace(/\s+/g, "")}`}
+              href={telephoneLink}
               className="header-call-btn"
               onClick={closeMenu}
             >
@@ -85,8 +113,13 @@ function Header({ phoneNumber = "+91 8697404639" }) {
                 <Phone size={15} strokeWidth={2.2} />
               </span>
 
-              <span className="call-label">CALL US NOW</span>
-              <span className="call-number">{phoneNumber}</span>
+              <span className="call-label">
+                CALL US NOW
+              </span>
+
+              <span className="call-number">
+                {formattedPhone}
+              </span>
             </a>
 
             <Link
@@ -100,35 +133,49 @@ function Header({ phoneNumber = "+91 8697404639" }) {
           </div>
         </nav>
 
-        {/* Desktop actions */}
+        {/* Desktop Actions */}
         <div className="header-desktop-actions">
           <a
-            href={`tel:${phoneNumber.replace(/\s+/g, "")}`}
+            href={telephoneLink}
             className="header-call-btn"
+            aria-label={`Call ${phoneNumber}`}
           >
             <span className="call-icon-circle">
               <Phone size={15} strokeWidth={2.2} />
             </span>
 
-            <span className="call-label">CALL US NOW</span>
-            <span className="call-number">{phoneNumber}</span>
+            <span className="call-label">
+              CALL US NOW
+            </span>
+
+            <span className="call-number">
+              {formattedPhone}
+            </span>
           </a>
 
-          <Link to="/contact" className="header-book-btn">
+          <Link
+            to="/contact"
+            className="header-book-btn"
+          >
             <Calendar size={16} strokeWidth={2.2} />
             <span>Book</span>
           </Link>
         </div>
 
-        {/* Mobile menu toggle */}
+        {/* Mobile Menu Toggle */}
         <button
           type="button"
           className="mobile-menu-toggle"
           onClick={() => setMenuOpen((previous) => !previous)}
           aria-label={menuOpen ? "Close menu" : "Open menu"}
           aria-expanded={menuOpen}
+          aria-controls="main-navigation"
         >
-          {menuOpen ? <X size={24} /> : <Menu size={24} />}
+          {menuOpen ? (
+            <X size={24} />
+          ) : (
+            <Menu size={24} />
+          )}
         </button>
       </div>
     </header>

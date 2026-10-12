@@ -3,14 +3,13 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import "./Specialisations.css";
 
-// Automatically load images from src/assets
 const assetImages = import.meta.glob("../assets/*", {
   eager: true,
   query: "?url",
   import: "default",
 });
 
-// Find image using its filename
+
 const resolveImageUrl = (fileName) => {
   const imagePath = `../assets/${fileName}`.toLowerCase();
 
@@ -21,7 +20,7 @@ const resolveImageUrl = (fileName) => {
   return matchedPath ? assetImages[matchedPath] : null;
 };
 
-// All specialisations
+
 const specialisations = [
   {
     title: "Clinical Psychology",
@@ -169,8 +168,8 @@ function Specialisations() {
                 style={
                   imageUrl
                     ? {
-                        backgroundImage: `url("${imageUrl}")`,
-                      }
+                      backgroundImage: `url("${imageUrl}")`,
+                    }
                     : undefined
                 }
               >

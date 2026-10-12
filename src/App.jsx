@@ -11,6 +11,7 @@ import Reviews from "./Components/Reviews";
 import Specialisations from "./Components/Specialisations";
 import SpecialisationDetails from "./Components/SpecialisationDetails";
 import Contact from "./Components/Contact";
+import Counsellor from "./Components/Counsellor";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -52,6 +53,9 @@ function App() {
           path="/specialisations"
           element={<Specialisations />}
         />
+
+        {/* Counsellor Page */}
+        <Route path="/counsellor" element={<Counsellor />} />
 
         {/* Contact Page */}
         <Route path="/contact" element={<Contact />} />
