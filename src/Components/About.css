@@ -42,7 +42,7 @@
 
 .about-doctor-visual {
   width: 100%;
-  min-height: 470px;
+  min-height: 490px;
   max-height: 680px;
 
   display: flex;
@@ -51,18 +51,20 @@
 
   overflow: hidden;
   border-radius: 26px;
-  background: #e8effc;
+  background: #f0f5ff;
   border: 1px solid #e0e8f8;
+  box-shadow: 0 14px 34px -8px rgba(48, 85, 178, 0.14);
 }
 
 .about-doctor-visual img {
   display: block;
   width: 100%;
   height: 100%;
-  min-height: 470px;
+  min-height: 490px;
   max-height: 680px;
-  padding: 35px;
-  object-fit: contain;
+  padding: 0;
+  object-fit: cover;
+  object-position: center top;
 }
 
 /* Right content */
@@ -264,15 +266,17 @@
   }
 
   .about-doctor-visual {
-    min-height: 260px;
-    max-height: 380px;
+    min-height: 320px;
+    max-height: 440px;
     border-radius: 20px;
   }
 
   .about-doctor-visual img {
-    min-height: 260px;
-    max-height: 380px;
-    padding: 25px;
+    min-height: 320px;
+    max-height: 440px;
+    padding: 0;
+    object-fit: cover;
+    object-position: center top;
   }
 
   .about-eyebrow {

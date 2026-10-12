@@ -9,7 +9,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 
-import logo from "../assets/logo.jpeg";
+import punamKumari from "../assets/punam-kumari.jpg";
 import "./About.css";
 
 const highlights = [
@@ -62,7 +62,7 @@ function About() {
         <div className="about-doctor-layout">
           {/* Image */}
           <div className="about-doctor-visual">
-            <img src={logo} alt="Man Ki Baat wellness society" />
+            <img src={punamKumari} alt="Psychologist Punam Kumari" />
           </div>
 
           {/* Content */}

@@ -1,13 +1,3 @@
-/* =========================================================
-   MAN KI BAAT - FOOTER STYLING
-   Official Brand Palette:
-   - Footer Background: #1F2937 (Dark Slate)
-   - Primary CTA:       #3055B2 (Appointment button)
-   - Accent Green:      #20A878 (Underlines, contact labels, hovers)
-   - Text Copy:         #FFFFFF / #D1D5DB
-   - Muted:             #9CA3AF
-========================================================= */
-
 .site-footer {
   width: 100%;
   background-color: var(--dark-slate);
@@ -26,10 +16,6 @@
   gap: 40px;
   align-items: start;
 }
-
-/* =========================
-   BRAND
-========================= */
 
 .footer-logo-link {
   display: inline-flex;
@@ -57,16 +43,12 @@
 }
 
 .footer-description {
-  color: #D1D5DB;
+  color: #d1d5db;
   font-size: 14px;
   line-height: 1.85;
   margin: 0;
   max-width: 340px;
 }
-
-/* =========================
-   SECTION HEADINGS
-========================= */
 
 .footer-links h3,
 .footer-contact h3 {
@@ -92,10 +74,6 @@
   border-radius: 2px;
 }
 
-/* =========================
-   FOOTER LINKS
-========================= */
-
 .footer-links {
   display: flex;
   flex-direction: column;
@@ -103,12 +81,14 @@
 }
 
 .footer-links a {
-  color: #D1D5DB;
+  color: #d1d5db;
   text-decoration: none;
   font-size: 14px;
   line-height: 1.6;
   margin-bottom: 12px;
-  transition: color 0.2s ease, transform 0.2s ease;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
   display: inline-block;
 }
 
@@ -118,10 +98,6 @@
   color: var(--accent-green);
   transform: translateX(2px);
 }
-
-/* =========================
-   CONTACT DETAILS
-========================= */
 
 .footer-contact p {
   display: flex;
@@ -140,7 +116,7 @@
 
 .footer-contact p span,
 .footer-contact p a {
-  color: #D1D5DB;
+  color: #d1d5db;
   font-size: 14px;
   line-height: 1.7;
   overflow-wrap: anywhere;
@@ -150,10 +126,6 @@
   text-decoration: none;
   transition: color 0.2s ease;
 }
-
-/* =========================
-   APPOINTMENT BUTTON (Primary CTA Button from guide: #3055B2)
-========================= */
 
 .footer-contact-button {
   display: inline-flex;
@@ -182,10 +154,6 @@
   box-shadow: 0 6px 20px rgba(48, 85, 178, 0.45);
 }
 
-/* =========================
-   BOTTOM BAR
-========================= */
-
 .footer-bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   max-width: 1320px;
@@ -199,7 +167,7 @@
 }
 
 .footer-bottom p {
-  color: #9CA3AF;
+  color: #9ca3af;
   font-size: 13px;
   line-height: 1.6;
   margin: 0;
@@ -230,9 +198,7 @@
   color: var(--white);
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
+/*Responsive*/
 
 @media (max-width: 1060px) {
   .footer-container {
