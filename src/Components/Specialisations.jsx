@@ -1,16 +1,14 @@
 
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Specialisations.css";
 
-// Automatically load images from src/assets
 const assetImages = import.meta.glob("../assets/*", {
   eager: true,
   query: "?url",
   import: "default",
 });
 
-// Find image using its filename
 const resolveImageUrl = (fileName) => {
   const imagePath = `../assets/${fileName}`.toLowerCase();
 
@@ -21,41 +19,40 @@ const resolveImageUrl = (fileName) => {
   return matchedPath ? assetImages[matchedPath] : null;
 };
 
-// All specialisations
 const specialisations = [
   {
     title: "Clinical Psychology",
     slug: "clinical-psychology",
     description:
-      "Mental health disorders, depression, anxiety, and stress.",
+      "Mental health concerns, depression, anxiety, and stress.",
     image: "Clinical.jpg",
   },
   {
     title: "Counselling Psychology",
     slug: "counselling-psychology",
     description:
-      "Emotional problems, relationship issues, and personal difficulties.",
+      "Emotional difficulties, relationship issues, and personal growth.",
     image: "Counselling.jpg",
   },
   {
     title: "Child Psychology",
     slug: "child-psychology",
     description:
-      "Children's emotional, behavioural, and developmental problems.",
+      "Children's emotional, behavioural, and developmental concerns.",
     image: "child.jpg",
   },
   {
     title: "Adolescent Psychology",
     slug: "adolescent-psychology",
     description:
-      "Teenage mental health, peer pressure, and identity issues.",
+      "Teenage mental health, peer pressure, and identity concerns.",
     image: "Adolescent.jpg",
   },
   {
     title: "Educational Psychology",
     slug: "educational-psychology",
     description:
-      "Learning difficulties, academic stress, and study problems.",
+      "Learning difficulties, academic stress, and study challenges.",
     image: "Educational.jpg",
   },
   {
@@ -69,7 +66,7 @@ const specialisations = [
     title: "Forensic Psychology",
     slug: "forensic-psychology",
     description:
-      "Psychological assessments related to legal cases and criminal behaviour.",
+      "Psychological assessments related to legal settings.",
     image: "Forensic.jpg",
   },
   {
@@ -83,7 +80,7 @@ const specialisations = [
     title: "Sports Psychology",
     slug: "sports-psychology",
     description:
-      "Motivation, concentration, and performance-related stress in athletes.",
+      "Motivation, concentration, confidence, and performance-related stress.",
     image: "Sports.jpg",
   },
   {
@@ -97,7 +94,7 @@ const specialisations = [
     title: "Rehabilitation Psychology",
     slug: "rehabilitation-psychology",
     description:
-      "Emotional and behavioural support for people with disabilities or injuries.",
+      "Psychological support during recovery, disability, and rehabilitation.",
     image: "Rehabilitation.jpg",
   },
   {
@@ -111,7 +108,7 @@ const specialisations = [
     title: "Family Psychology",
     slug: "family-psychology",
     description:
-      "Family conflicts, communication problems, and family relationships.",
+      "Family relationships, communication, and conflict resolution.",
     image: "family.jpg",
   },
   {
@@ -125,40 +122,75 @@ const specialisations = [
     title: "Community Psychology",
     slug: "community-psychology",
     description:
-      "Mental health promotion and psychological support within communities.",
+      "Mental health awareness and psychological support within communities.",
     image: "Community.jpg",
   },
 ];
 
 function Specialisations() {
+  const sectionRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+
+    if (!section) return;
+
+    if (!("IntersectionObserver" in window)) {
+      setIsVisible(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        threshold: 0.08,
+        rootMargin: "0px 0px -30px 0px",
+      }
+    );
+
+    observer.observe(section);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section
-      className="specialisations-section"
+      ref={sectionRef}
       id="specialisations"
+      className={`specialisations-section ${
+        isVisible ? "specialisations-visible" : ""
+      }`}
     >
       <div className="specialisations-container">
-
-        {/* Section heading */}
+        {/* Section Heading */}
         <header className="specialisations-heading">
           <div className="specialisations-eyebrow">
-            <span />
+            <span className="eyebrow-line" />
             OUR AREAS OF SUPPORT
+            <span className="eyebrow-line" />
           </div>
 
           <h2>
             Specialisations of Psychologists
-            <span>Areas of Care</span>
+            <span className="heading-highlight">Areas of Care</span>
           </h2>
 
           <p>
-            Explore different areas of psychology and learn about
-            the concerns each specialisation focuses on.
+            Explore different areas of psychology and discover the
+            support available for various emotional, behavioural,
+            developmental, and mental health concerns.
           </p>
         </header>
 
-        {/* Specialisation cards */}
+        {/* Specialisation Cards */}
         <div className="specialisations-grid">
-          {specialisations.map((item) => {
+          {specialisations.map((item, index) => {
             const imageUrl = resolveImageUrl(item.image);
 
             return (
@@ -168,11 +200,16 @@ function Specialisations() {
                 style={
                   imageUrl
                     ? {
-                        backgroundImage: `url("${imageUrl}")`,
+                        "--card-index": index,
+                        "--card-image": `url("${imageUrl}")`,
                       }
-                    : undefined
+                    : {
+                        "--card-index": index,
+                      }
                 }
               >
+                <div className="specialisation-image" />
+
                 <div className="specialisation-overlay" />
 
                 {!imageUrl && (
@@ -182,6 +219,10 @@ function Specialisations() {
                 )}
 
                 <div className="specialisation-content">
+                  <span className="card-number">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+
                   <h3>{item.title}</h3>
 
                   <p>{item.description}</p>
@@ -191,7 +232,10 @@ function Specialisations() {
                     className="specialisation-explore"
                     aria-label={`Explore ${item.title}`}
                   >
-                    EXPLORE <span aria-hidden="true">→</span>
+                    <span>EXPLORE MORE</span>
+                    <span className="specialisation-arrow" aria-hidden="true">
+                      →
+                    </span>
                   </Link>
                 </div>
               </article>

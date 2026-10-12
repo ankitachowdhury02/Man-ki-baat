@@ -1,18 +1,9 @@
-
-/* =========================
-   MAIN DETAILS PAGE
-========================= */
-
 .detail-page {
   min-height: 70vh;
   padding-bottom: 0;
   background: #faf7f0;
   color: #3055b2;
 }
-
-/* =========================
-   HERO SECTION
-========================= */
 
 .detail-hero {
   width: 100%;
@@ -63,9 +54,7 @@
   line-height: 1.9;
 }
 
-/* =========================
-   AREAS OF CARE
-========================= */
+/*Areas of Care Section*/
 
 .detail-content {
   width: 100%;
@@ -129,10 +118,6 @@
   transition: color 0.25s ease;
 }
 
-/* =========================
-   PATIENT EXPERIENCES
-========================= */
-
 .patient-experiences {
   width: 100%;
   padding: 25px 0 35px;
@@ -187,11 +172,6 @@
   font-weight: 600;
   line-height: 1.6;
 }
-
-/* =========================
-   WOULD YOU LIKE TO KNOW MORE?
-   Screenshot-inspired contact card
-========================= */
 
 .more-information-section {
   width: 100%;
@@ -270,9 +250,7 @@
   background: #20a878;
 }
 
-/* =========================
-   NOT FOUND
-========================= */
+/*Details Not Found Section*/
 
 .detail-not-found {
   min-height: 60vh;
@@ -290,9 +268,7 @@
   line-height: 1.8;
 }
 
-/* =========================
-   TABLET
-========================= */
+/*Tablet*/
 
 @media (max-width: 900px) {
   .detail-hero {
@@ -316,9 +292,7 @@
   }
 }
 
-/* =========================
-   MOBILE
-========================= */
+/*Mobile*/
 
 @media (max-width: 650px) {
   .detail-hero {

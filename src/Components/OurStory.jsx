@@ -1,4 +1,3 @@
-
 import "./OurStory.css";
 
 const principles = [
@@ -9,8 +8,7 @@ const principles = [
   },
   {
     title: "Personalised Guidance",
-    description:
-      "Consider each person's needs, concerns and circumstances.",
+    description: "Consider each person's needs, concerns and circumstances.",
   },
   {
     title: "Trust & Confidentiality",
@@ -39,19 +37,15 @@ function OurStory() {
         </h2>
 
         <p className="story-description">
-          Man Ki Baat – Child Development &amp; Mental Health
-          Wellness Society is dedicated to supporting children,
-          adolescents, adults and families through compassionate
-          counselling and guidance. We believe every individual
-          deserves to feel heard, respected and understood.
+          Man Ki Baat – Child Development &amp; Mental Health Wellness Society
+          is dedicated to supporting children, adolescents, adults and families
+          through compassionate counselling and guidance. We believe every
+          individual deserves to feel heard, respected and understood.
         </p>
 
         <div className="story-principles">
           {principles.map((principle) => (
-            <article
-              className="story-principle-card"
-              key={principle.title}
-            >
+            <article className="story-principle-card" key={principle.title}>
               <h3>{principle.title}</h3>
               <p>{principle.description}</p>
             </article>
