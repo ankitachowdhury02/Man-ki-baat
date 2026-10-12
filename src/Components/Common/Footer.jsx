@@ -31,10 +31,9 @@ function Footer() {
         {/* Links Section */}
         <div className="footer-links">
           <h3>Quick Links</h3>
-          <a href="#home">Home</a>
-          <a href="#about">About Us</a>
-          <a href="#services">Our Services</a>
-          <a href="#counsellor">Counsellor</a>
+          <Link to="#home">Home</Link>
+          <Link to="/about">About Us</Link>
+          <Link to="services">Our Services</Link>
           <Link to="/contact">Contact Us</Link>
         </div>
 

@@ -1,6 +1,6 @@
 
-import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React, { useEffect } from "react";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 
 import Header from "./Components/Common/Header";
 import Footer from "./Components/Common/Footer";
@@ -11,6 +11,17 @@ import Reviews from "./Components/Reviews";
 import Specialisations from "./Components/Specialisations";
 import SpecialisationDetails from "./Components/SpecialisationDetails";
 import Contact from "./Components/Contact";
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
 function Home() {
   return (
     <>
@@ -25,6 +36,7 @@ function Home() {
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Header />
 
       <Routes>
@@ -33,13 +45,16 @@ function App() {
 
         {/* About Page */}
         <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
 
-        {/* All Specialisations */}
+        {/* Dedicated Services / Specialisations Page */}
+        <Route path="/services" element={<Specialisations />} />
         <Route
           path="/specialisations"
           element={<Specialisations />}
         />
+
+        {/* Contact Page */}
+        <Route path="/contact" element={<Contact />} />
 
         {/* Individual Specialisation Details */}
         <Route

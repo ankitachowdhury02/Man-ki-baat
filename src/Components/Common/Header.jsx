@@ -1,37 +1,22 @@
 
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Phone, Calendar, Menu, X } from "lucide-react";
 import "./Header.css";
 import logo from "../../assets/logo.jpeg";
 
 function Header({ phoneNumber = "+91 8697404639" }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
 
   const navLinks = [
     { name: "Home", href: "/", type: "page" },
     { name: "About Us", href: "/about", type: "page" },
-    { name: "Our Services", href: "/#services", type: "section" },
-    { name: "Counsellor", href: "/#counsellor", type: "section" },
+    { name: "Our Services", href: "/services", type: "page" },
     { name: "Contact", href: "/contact", type: "page" },
   ];
 
   const closeMenu = () => setMenuOpen(false);
-
-  const handleNavClick = (link) => {
-    closeMenu();
-
-    // Scroll to a section on the home page.
-    if (link.type === "section" && window.location.pathname === "/") {
-      const sectionId = link.href.split("#")[1];
-
-      setTimeout(() => {
-        document.getElementById(sectionId)?.scrollIntoView({
-          behavior: "smooth",
-        });
-      }, 100);
-    }
-  };
 
   return (
     <header className="site-header">
@@ -67,16 +52,27 @@ function Header({ phoneNumber = "+91 8697404639" }) {
           }`}
           aria-label="Main navigation"
         >
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              to={link.href}
-              className="header-nav-link"
-              onClick={() => handleNavClick(link)}
-            >
-              {link.name}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const isActive =
+              link.href === "/"
+                ? location.pathname === "/"
+                : location.pathname.startsWith(link.href) ||
+                  (link.href === "/services" &&
+                    location.pathname.startsWith("/specialisations"));
+
+            return (
+              <Link
+                key={link.name}
+                to={link.href}
+                className={`header-nav-link ${
+                  isActive ? "header-nav-link-active" : ""
+                }`}
+                onClick={closeMenu}
+              >
+                {link.name}
+              </Link>
+            );
+          })}
 
           {/* Mobile actions */}
           <div className="mobile-header-actions">

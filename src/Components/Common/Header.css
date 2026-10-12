@@ -135,8 +135,14 @@
 }
 
 .header-nav-link:hover::after,
-.header-nav-link:focus-visible::after {
+.header-nav-link:focus-visible::after,
+.header-nav-link-active::after {
   width: 100%;
+}
+
+.header-nav-link-active {
+  color: var(--primary-blue);
+  font-weight: 600;
 }
 
 /* Mobile Actions - Hidden on Desktop */
