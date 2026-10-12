@@ -172,6 +172,7 @@
   color: #ffffff;
   font-size: 14px;
   line-height: 1.8;
+  white-space: pre-line;
 }
 
 /* Author */
@@ -215,6 +216,53 @@
   margin-top: 5px;
   color: rgba(255, 255, 255, 0.7);
   font-size: 11px;
+}
+
+/* Google Reviews CTA */
+
+.reviews-google-cta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 38px;
+}
+
+.reviews-google-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #ffffff;
+  color: #1a73e8;
+  font-family: inherit;
+  font-size: 14.5px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  padding: 10px 22px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.22s ease;
+  cursor: pointer;
+}
+
+.reviews-google-btn:hover {
+  background-color: #f8fafd;
+  color: #1557b0;
+  border-color: #1a73e8;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+  transform: translateY(-2px);
+}
+
+.reviews-google-btn:active {
+  transform: translateY(0);
+}
+
+.reviews-google-icon {
+  display: block;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
 }
 
 /* Placeholder disclaimer */
@@ -303,5 +351,15 @@
 
   .review-quote {
     margin: 18px 0 22px;
+  }
+
+  .reviews-google-cta {
+    margin-top: 26px;
+  }
+
+  .reviews-google-btn {
+    font-size: 13.5px;
+    padding: 9px 18px;
+    gap: 8px;
   }
 }
