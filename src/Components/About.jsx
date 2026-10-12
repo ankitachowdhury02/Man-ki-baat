@@ -11,6 +11,7 @@ import {
 
 import punamKumari from "../assets/punam-kumari.jpg";
 import "./About.css";
+import PhotoGallery from "./PhotoGallery";
 
 const highlights = [
   {
@@ -58,14 +59,18 @@ const credentials = [
 function About() {
   return (
     <main className="about-page">
+      {/* About Counsellor Section */}
       <section className="about-doctor-section">
         <div className="about-doctor-layout">
-          {/* Image */}
+          {/* Counsellor Image */}
           <div className="about-doctor-visual">
-            <img src={punamKumari} alt="Psychologist Punam Kumari" />
+            <img
+              src={punamKumari}
+              alt="Psychologist Punam Kumari"
+            />
           </div>
 
-          {/* Content */}
+          {/* Counsellor Information */}
           <div className="about-doctor-information">
             <div className="about-eyebrow">
               <span />
@@ -78,13 +83,15 @@ function About() {
             </h1>
 
             <p className="about-intro">
-              Punam Kumari is associated with Man Ki Baat — Child Development
-              & Mental Health Wellness Society. With over 18 years of
-              counselling experience and over 22 years of primary school
-              teaching experience, she aims to support individuals through
-              empathy, understanding and personalised guidance.
+              Punam Kumari is associated with Man Ki Baat —
+              Child Development & Mental Health Wellness Society.
+              With over 18 years of counselling experience and
+              over 22 years of primary school teaching experience,
+              she aims to support individuals through empathy,
+              understanding and personalised guidance.
             </p>
 
+            {/* Highlights */}
             <div className="about-highlight-grid">
               {highlights.map((item) => {
                 const Icon = item.icon;
@@ -107,10 +114,13 @@ function About() {
               })}
             </div>
 
-            {/* Qualifications and Experience Cards*/}
+            {/* Qualifications and Experience */}
             <div className="about-credentials">
               {credentials.map((credential) => (
-                <div className="credential-item" key={credential}>
+                <div
+                  className="credential-item"
+                  key={credential}
+                >
                   <ShieldCheck size={17} />
                   <span>{credential}</span>
                 </div>
@@ -119,6 +129,9 @@ function About() {
           </div>
         </div>
       </section>
+
+      {/* Photo Gallery - Below About Section */}
+      <PhotoGallery />
     </main>
   );
 }
