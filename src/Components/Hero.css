@@ -30,20 +30,25 @@
   transform: scale(1);
 }
 
+
+
+/* Clean and balanced hero background */
 .hero-overlay {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background:
-    linear-gradient(
-      90deg,
-      rgba(31, 41, 55, 0.92) 0%,
-      rgba(31, 41, 55, 0.8) 45%,
-      rgba(31, 41, 55, 0.45) 100%
-    ),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.15) 0%, rgba(31, 41, 55, 0.75) 100%);
+
+  background: linear-gradient(90deg,
+      rgba(20, 28, 42, 0.48) 0%,
+      rgba(20, 28, 42, 0.32) 38%,
+      rgba(20, 28, 42, 0.16) 68%,
+      rgba(20, 28, 42, 0.10) 100%);
+
   pointer-events: none;
 }
+
+
+
 
 .hero-content-wrap {
   position: relative;
@@ -225,6 +230,7 @@
     opacity: 0;
     transform: translateY(14px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -245,13 +251,16 @@
     padding: 70px 20px 95px;
   }
 
-  .hero-overlay {
-    background: linear-gradient(
-      180deg,
-      rgba(31, 41, 55, 0.85) 0%,
-      rgba(31, 41, 55, 0.92) 100%
-    );
+
+  @media (max-width: 900px) {
+    .hero-overlay {
+      background: linear-gradient(90deg,
+          rgba(20, 28, 42, 0.48) 0%,
+          rgba(20, 28, 42, 0.30) 100%);
+    }
   }
+
+
 
   .hero-contact-buttons {
     right: 16px;

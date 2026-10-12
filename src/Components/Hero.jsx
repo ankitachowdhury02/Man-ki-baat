@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import "./Hero.css";
-import heroMentalHealth from "../assets/hero-mental-health.jpg";
+import punamKumari from "../assets/punam-kumari.jpg";
 import photo5 from "../assets/photo5.jpg";
-import heroWellness from "../assets/hero-wellness.jpg";
+import photo6 from "../assets/photo6.jpg";
 import photo2 from "../assets/photo2.jpg";
 
 const slides = [
@@ -20,8 +20,8 @@ const slides = [
     shortText: "A supportive space for mental wellness and personal growth.",
     description:
       "Discover compassionate counselling and guidance for children, adolescents and families. We aim to create a safe, understanding environment where every individual feels heard, respected and supported.",
-    image: heroMentalHealth,
-    position: "center center",
+    image: punamKumari,
+    position: "right 20%",
   },
   {
     eyebrow: "CHILD & ADOLESCENT WELLNESS",
@@ -54,8 +54,8 @@ const slides = [
     shortText: "Your feelings matter. Your story matters.",
     description:
       "Find space to express your concerns, explore your feelings and learn about counselling options in a respectful and supportive environment.",
-    image: heroWellness,
-    position: "center center",
+    image: photo6,
+    position: "right 22%",
   },
   {
     eyebrow: "MAN KI BAAT COUNSELLING SERVICES",
