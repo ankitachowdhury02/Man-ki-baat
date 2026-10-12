@@ -48,6 +48,42 @@ function Footer() {
             <span>32/5, Gariahat Road, Salimpur, Kolkata, West Bengal</span>
           </p>
 
+          <div className="footer-directions-actions">
+            <a
+              href="https://www.google.com/maps/dir/?api=1&destination=Mental+Health+%26+Wellness+Centre+%28Counselor%29%2C+32%2F5%2C+Goriahat+Road%2C+Kolkata%2C+West+Bengal%2C+700033&destination_place_id=ChIJu5o2lDNxAjoRUFT6AR_MVQE"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-directions-btn"
+            >
+              <svg
+                className="footer-directions-icon"
+                viewBox="0 0 24 24"
+                width="16"
+                height="16"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M12 2v20" />
+                <path d="M12 5h7l2 3-2 3h-7" />
+                <path d="M12 13H5l-2 3 2 3h7" />
+              </svg>
+              <span>Get directions</span>
+            </a>
+
+            <a
+              href="https://www.google.com/maps/place/Mental+Health+%26+Wellness+Centre+(Counselor)/@22.505176,88.3674077,17z/data=!3m1!4b1!4m6!3m5!1s0x3a02713394369abb:0x155cc1f01fa5450!8m2!3d22.505176!4d88.3674077!16s%2Fg%2F11yvpwrfcc?entry=ttu&g_ep=EgoyMDI2MTAwNy4wIKXMDSoASAFQAw%3D%3D"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-view-map-btn"
+            >
+              View map
+            </a>
+          </div>
+
           <p>
             <strong>Phone</strong>
             <a href="tel:+918697404639">+91 8697404639</a>
