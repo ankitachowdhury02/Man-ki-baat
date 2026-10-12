@@ -237,6 +237,10 @@
     min-height: 600px;
   }
 
+  .hero-slide {
+    background-position: 70% 20% !important;
+  }
+
   .hero-content-wrap {
     padding: 70px 20px 95px;
   }
