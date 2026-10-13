@@ -1,11 +1,9 @@
 
-import React, { useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 import {
     CalendarDays,
     Clock3,
-    ChevronLeft,
-    ChevronRight,
     CheckCircle2,
     ArrowRight,
     HeartHandshake,
@@ -80,115 +78,23 @@ const services = [
     },
 ];
 
-/*
-  Schedule uses JavaScript weekday numbers:
-  Sunday = 0, Monday = 1, Tuesday = 2, etc.
-*/
-const weeklySchedule = {
-    0: { label: "Sunday", slots: [] },
-
-    1: {
-        label: "Monday",
-        slots: [
-            "11:00 AM",
-            "11:30 AM",
-            "12:00 PM",
-            "12:30 PM",
-        ],
-    },
-
-    2: {
-        label: "Tuesday",
-        slots: [
-            "4:00 PM",
-            "4:15 PM",
-            "4:30 PM",
-            "4:45 PM",
-        ],
-    },
-
-    3: { label: "Wednesday", slots: [] },
-
-    4: {
-        label: "Thursday",
-        slots: [
-            "4:00 PM",
-            "4:15 PM",
-            "4:30 PM",
-            "4:45 PM",
-        ],
-    },
-
-    5: {
-        label: "Friday",
-        slots: [
-            "5:00 PM",
-            "5:30 PM",
-            "6:00 PM",
-            "6:30 PM",
-        ],
-    },
-
-    6: { label: "Saturday", slots: [] },
-};
+/* Published Business Hours */
+const businessHours = [
+    { day: "Monday", hours: "11am-1pm", isAvailable: true },
+    { day: "Tuesday", hours: "4pm-5pm", isAvailable: true },
+    { day: "Wednesday", hours: "Not provided", isAvailable: false },
+    { day: "Thursday", hours: "4pm-5pm", isAvailable: true },
+    { day: "Friday", hours: "5pm-7pm", isAvailable: true },
+    { day: "Saturday", hours: "Not provided", isAvailable: false },
+    { day: "Sunday", hours: "Not provided", isAvailable: false },
+];
 
 function Counsellor() {
-    const navigate = useNavigate();
-
-    const [dateOffset, setDateOffset] = useState(0);
-    const [selectedDate, setSelectedDate] = useState(null);
-    const [selectedTime, setSelectedTime] = useState("");
-
-    /* Generate three dates starting from today */
-    const dates = useMemo(() => {
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
-        today.setDate(today.getDate() + dateOffset);
-
-        return Array.from({ length: 3 }, (_, index) => {
-            const date = new Date(today);
-            date.setDate(today.getDate() + index);
-
-            return {
-                date,
-                weekday: date.toLocaleDateString("en-IN", {
-                    weekday: "short",
-                }),
-                month: date.toLocaleDateString("en-IN", {
-                    month: "short",
-                }),
-                day: date.getDate(),
-            };
-        });
-    }, [dateOffset]);
-
-    const handleSelectDate = (date) => {
-        setSelectedDate(date);
-        setSelectedTime("");
-    };
-
-    const handleContinueBooking = () => {
-        if (!selectedDate || !selectedTime) return;
-
-        const year = selectedDate.getFullYear();
-        const month = String(selectedDate.getMonth() + 1).padStart(2, "0");
-        const day = String(selectedDate.getDate()).padStart(2, "0");
-
-        const formattedDate = `${year}-${month}-${day}`;
-
-        navigate(
-            `/contact?date=${encodeURIComponent(
-                formattedDate
-            )}&time=${encodeURIComponent(
-                selectedTime
-            )}&type=${encodeURIComponent("Initial consultation")}`
-        );
-    };
 
     return (
         <main className="counsellor-page">
 
-            {/* ================= HERO ================= */}
+
             <section className="counsellor-hero">
                 <div className="counsellor-hero-decoration counsellor-decoration-one" />
                 <div className="counsellor-hero-decoration counsellor-decoration-two" />
@@ -262,8 +168,6 @@ function Counsellor() {
                     </div>
                 </div>
             </section>
-
-            {/* ================= INTRODUCTION ================= */}
             <section className="counsellor-intro-section">
                 <div className="counsellor-container counsellor-intro-layout">
                     <div>
@@ -294,7 +198,7 @@ function Counsellor() {
                 </div>
             </section>
 
-            {/* ================= SERVICES ================= */}
+
             <section
                 className="counsellor-services-section"
                 id="counsellor-services"
@@ -350,7 +254,6 @@ function Counsellor() {
                 </div>
             </section>
 
-            {/* ================= APPROACH ================= */}
             <section className="counsellor-approach">
                 <div className="counsellor-container counsellor-approach-layout">
                     <div className="counsellor-approach-visual">
@@ -409,7 +312,7 @@ function Counsellor() {
                 </div>
             </section>
 
-            {/* ================= BOOKING CALENDAR ================= */}
+            {/*Calender*/}
             <section
                 className="counsellor-booking-section"
                 id="counsellor-booking"
@@ -426,189 +329,55 @@ function Counsellor() {
                         </h2>
 
                         <p>
-                            Choose a preferred date and time to enquire about an initial
-                            consultation with Man Ki Baat.
+                            Check our published counselling hours or reach out directly to
+                            enquire about an initial consultation with Man Ki Baat.
                         </p>
 
                         <div className="counsellor-booking-benefit">
                             <CheckCircle2 size={19} />
-                            <span>Choose from the published counselling hours</span>
+                            <span>Published counselling hours for scheduled consultations</span>
                         </div>
 
                         <div className="counsellor-booking-benefit">
                             <CheckCircle2 size={19} />
-                            <span>Appointment confirmation follows availability checks</span>
+                            <span>You can contact us anytime during the day with your query</span>
                         </div>
                     </div>
 
-                    <div className="counsellor-booking-widget">
-                        <div className="counsellor-booking-header">
-                            <div className="counsellor-booking-header-icon">
-                                <CalendarDays size={24} />
-                            </div>
-
-                            <div>
-                                <h3>Book a Free Initial Consultation</h3>
-                                <p>Mental Health &amp; Wellness Centre</p>
-                            </div>
-                        </div>
-
-                        <div className="counsellor-booking-body">
-                            <div className="counsellor-calendar-toolbar">
-                                <div>
-                                    <h4>Select date &amp; time</h4>
-                                    <p>Choose your preferred available slot</p>
-                                </div>
-
-                                <div className="counsellor-calendar-arrows">
-                                    <button
-                                        type="button"
-                                        aria-label="Previous dates"
-                                        disabled={dateOffset === 0}
-                                        onClick={() => {
-                                            setDateOffset((current) => Math.max(0, current - 3));
-                                            setSelectedDate(null);
-                                            setSelectedTime("");
-                                        }}
-                                    >
-                                        <ChevronLeft size={19} />
-                                    </button>
-
-                                    <button
-                                        type="button"
-                                        aria-label="Next dates"
-                                        onClick={() => {
-                                            setDateOffset((current) => current + 3);
-                                            setSelectedDate(null);
-                                            setSelectedTime("");
-                                        }}
-                                    >
-                                        <ChevronRight size={19} />
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div className="counsellor-calendar-grid">
-                                {dates.map((item) => {
-                                    const daySchedule =
-                                        weeklySchedule[item.date.getDay()];
-
-                                    const isSelected =
-                                        selectedDate?.toDateString() ===
-                                        item.date.toDateString();
-
-                                    return (
-                                        <div
-                                            key={item.date.toISOString()}
-                                            className={`counsellor-date-column ${isSelected
-                                                    ? "counsellor-date-column-active"
-                                                    : ""
-                                                }`}
-                                        >
-                                            <button
-                                                type="button"
-                                                className="counsellor-date-heading"
-                                                onClick={() => handleSelectDate(item.date)}
-                                            >
-                                                <span>{item.weekday}</span>
-
-                                                <strong>
-                                                    {item.month} {item.day}
-                                                </strong>
-
-                                                {isSelected && (
-                                                    <CheckCircle2
-                                                        size={14}
-                                                        className="counsellor-date-check"
-                                                    />
-                                                )}
-                                            </button>
-
-                                            <div className="counsellor-time-list">
-                                                {daySchedule.slots.length > 0 ? (
-                                                    daySchedule.slots.map((time) => {
-                                                        const isTimeSelected =
-                                                            isSelected && selectedTime === time;
-
-                                                        return (
-                                                            <button
-                                                                type="button"
-                                                                key={time}
-                                                                className={`counsellor-time-slot ${isTimeSelected
-                                                                        ? "counsellor-time-slot-active"
-                                                                        : ""
-                                                                    }`}
-                                                                aria-pressed={isTimeSelected}
-                                                                onClick={() => {
-                                                                    setSelectedDate(item.date);
-                                                                    setSelectedTime(time);
-                                                                }}
-                                                            >
-                                                                {time}
-                                                            </button>
-                                                        );
-                                                    })
-                                                ) : (
-                                                    <div className="counsellor-no-slots">
-                                                        Not provided
-                                                    </div>
-                                                )}
-                                            </div>
-                                        </div>
-                                    );
-                                })}
-                            </div>
-
-                            <div className="counsellor-booking-hours-note">
-                                <Clock3 size={15} />
-                                <span>
-                                    Mon: 11 AM–1 PM · Tue/Thu: 4 PM–5 PM · Fri: 5 PM–7 PM
-                                </span>
-                            </div>
-
-                            <div className="counsellor-booking-summary">
-                                {selectedDate && selectedTime ? (
-                                    <p>
-                                        <CheckCircle2 size={17} />
-
-                                        <span>
-                                            Preferred:{" "}
-                                            {selectedDate.toLocaleDateString("en-IN", {
-                                                day: "numeric",
-                                                month: "short",
-                                                year: "numeric",
-                                            })}{" "}
-                                            at {selectedTime}
-                                        </span>
-                                    </p>
-                                ) : (
-                                    <p>
-                                        <Clock3 size={17} />
-                                        <span>Select a date and time to continue.</span>
-                                    </p>
-                                )}
-                            </div>
-
-                            <button
-                                type="button"
-                                className="counsellor-booking-continue"
-                                disabled={!selectedDate || !selectedTime}
-                                onClick={handleContinueBooking}
-                            >
-                                Continue Booking
-                                <ArrowRight size={18} />
-                            </button>
-
-                            <p className="counsellor-booking-note">
-                                Your selection is a preferred time, not a confirmed
-                                appointment. Our team must confirm availability.
+                    <div className="counsellor-hours-card">
+                        <div className="counsellor-hours-header">
+                            <h3 className="counsellor-hours-title">Business hours</h3>
+                            <p className="counsellor-hours-subtitle">
+                                Mental Health &amp; Wellness Centre (Counselor)
                             </p>
                         </div>
+
+                        <div className="counsellor-hours-list">
+                            {businessHours.map((item) => (
+                                <div key={item.day} className="counsellor-hours-row">
+                                    <span className="counsellor-hours-day">{item.day}</span>
+                                    <span
+                                        className={`counsellor-hours-time ${!item.isAvailable ? "counsellor-hours-empty" : ""
+                                            }`}
+                                    >
+                                        {item.hours}
+                                    </span>
+                                </div>
+                            ))}
+                        </div>
+
+                        <p className="counsellor-hours-footer">
+                            You can{" "}
+                            <Link to="/contact" className="counsellor-hours-contact-link">
+                                contact us
+                            </Link>{" "}
+                            anytime during the day with your query.
+                        </p>
                     </div>
                 </div>
             </section>
 
-            {/* ================= FINAL CTA ================= */}
+
             <section className="counsellor-final-cta">
                 <div className="counsellor-container counsellor-final-cta-content">
                     <div>
