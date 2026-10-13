@@ -16,7 +16,7 @@ const assetImages = import.meta.glob("../assets/*", {
   import: "default",
 });
 
-/* Only photo1.jpg, photo2.jpg, photo3.jpg, etc. */
+
 const photos = Object.entries(assetImages)
   .filter(([path]) => {
     const fileName = path.split("/").pop();

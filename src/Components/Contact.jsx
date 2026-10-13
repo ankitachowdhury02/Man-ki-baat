@@ -65,7 +65,6 @@ function Contact() {
       [name]: value,
     }));
 
-    // Remove this field's error as the user edits it.
     setErrors((previous) => ({
       ...previous,
       [name]: "",
@@ -181,7 +180,6 @@ function Contact() {
   return (
     <main className="contact-page">
       <section className="contact-layout">
-        {/* Left: Contact information */}
         <div className="contact-intro">
           <div className="contact-eyebrow">
             <span className="contact-eyebrow-line" />
@@ -259,7 +257,7 @@ function Contact() {
           </div>
         </div>
 
-        {/* Right: Appointment form */}
+
         <div className="contact-form-card">
           <div className="contact-form-heading">
             <span>YOUR APPOINTMENT</span>
@@ -301,9 +299,8 @@ function Contact() {
               <div className="contact-field">
                 <RequiredLabel htmlFor="phone">Phone Number</RequiredLabel>
                 <div
-                  className={`contact-phone-input ${
-                    errors.phone ? "input-error" : ""
-                  }`}
+                  className={`contact-phone-input ${errors.phone ? "input-error" : ""
+                    }`}
                 >
                   <span>IN +91</span>
                   <input
@@ -422,7 +419,6 @@ function Contact() {
                 <FieldError message={errors.preferredDate} />
               </div>
 
-              {/* Preferred Time */}
               <div className="contact-field">
                 <RequiredLabel htmlFor="preferredTime">
                   Preferred Time
@@ -442,8 +438,6 @@ function Contact() {
                 </select>
                 <FieldError message={errors.preferredTime} />
               </div>
-
-              {/* Consultation Type */}
               <div className="contact-field contact-field-full">
                 <RequiredLabel htmlFor="consultationType">
                   Consultation Type
@@ -467,7 +461,6 @@ function Contact() {
                 <FieldError message={errors.consultationType} />
               </div>
 
-              {/* Optional Message */}
               <div className="contact-field contact-field-full">
                 <label htmlFor="message">
                   Additional Information (Optional)
@@ -496,7 +489,6 @@ function Contact() {
         </div>
       </section>
 
-      {/* Floating Call Button */}
       <a
         className="contact-floating-call"
         href="tel:+918697404639"

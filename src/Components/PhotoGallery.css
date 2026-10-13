@@ -1,8 +1,3 @@
-
-/* =========================================
-   PHOTO GALLERY - MAN KI BAAT
-========================================= */
-
 .photo-gallery-section {
   --gallery-blue: #3055b2;
   --gallery-green: #20a878;
@@ -21,9 +16,7 @@
   margin: 0 auto;
 }
 
-/* =========================================
-   HEADING
-========================================= */
+
 
 .photo-gallery-heading {
   display: flex;
@@ -93,9 +86,6 @@
   font-weight: 700;
 }
 
-/* =========================================
-   PHOTO GRID
-========================================= */
 
 .photo-gallery-grid {
   display: grid;
@@ -145,9 +135,7 @@
   transform: scale(1.07);
 }
 
-/* =========================================
-   PHOTO HOVER OVERLAY
-========================================= */
+
 
 .gallery-photo-overlay {
   position: absolute;
@@ -166,7 +154,7 @@
   transition: opacity 0.35s ease;
 }
 
-.gallery-photo-overlay > span:last-child {
+.gallery-photo-overlay>span:last-child {
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.5px;
@@ -201,9 +189,7 @@
   outline-offset: 3px;
 }
 
-/* =========================================
-   VIEW ALL BUTTON
-========================================= */
+
 
 .gallery-view-all {
   display: flex;
@@ -245,9 +231,6 @@
   transform: translateY(-2px);
 }
 
-/* =========================================
-   EMPTY STATE
-========================================= */
 
 .gallery-empty-message {
   display: flex;
@@ -265,7 +248,7 @@
   border-radius: 15px;
 }
 
-.gallery-empty-message > svg {
+.gallery-empty-message>svg {
   margin-bottom: 12px;
   color: var(--gallery-blue);
 }
@@ -283,9 +266,7 @@
   line-height: 1.8;
 }
 
-/* =========================================
-   LIGHTBOX MODAL (GOOGLE PHOTOS / MAPS STYLE)
-========================================= */
+
 
 .gallery-lightbox {
   position: fixed;
@@ -509,9 +490,7 @@
   content: "Next photo";
 }
 
-/* =========================================
-   ANIMATIONS
-========================================= */
+/* Animations */
 
 @keyframes galleryFadeIn {
   from {
@@ -535,9 +514,7 @@
   }
 }
 
-/* =========================================
-   TABLET
-========================================= */
+/* Tablet */
 
 @media (max-width: 1024px) {
   .photo-gallery-section {
@@ -550,9 +527,7 @@
   }
 }
 
-/* =========================================
-   MOBILE
-========================================= */
+/* Mobile */
 
 @media (max-width: 650px) {
   .photo-gallery-section {
@@ -666,9 +641,7 @@
   }
 }
 
-/* =========================================
-   SMALL MOBILE
-========================================= */
+/* Small Mobile */
 
 @media (max-width: 360px) {
   .photo-gallery-section {
@@ -685,11 +658,10 @@
   }
 }
 
-/* =========================================
-   REDUCED MOTION
-========================================= */
+/* Reduced Motion */
 
 @media (prefers-reduced-motion: reduce) {
+
   .photo-gallery-section *,
   .photo-gallery-section *::before,
   .photo-gallery-section *::after,

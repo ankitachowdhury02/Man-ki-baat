@@ -59,7 +59,7 @@ const credentials = [
 function About() {
   return (
     <main className="about-page">
-      {/* About Counsellor Section */}
+
       <section className="about-doctor-section">
         <div className="about-doctor-layout">
           {/* Counsellor Image */}
@@ -70,7 +70,7 @@ function About() {
             />
           </div>
 
-          {/* Counsellor Information */}
+
           <div className="about-doctor-information">
             <div className="about-eyebrow">
               <span />

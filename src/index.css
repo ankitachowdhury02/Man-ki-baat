@@ -1,13 +1,10 @@
-/* =========================================================
-   MAN KI BAAT - OFFICIAL BRAND COLOR PALETTE & DESIGN SYSTEM
-   From Official Brand Guide PDF:
+/*  From Official Brand Guide PDF:
    - Primary Blue:   #3055B2 (Headers, navigation, primary buttons & links)
    - Accent Green:   #20A878 (Secondary actions, highlights & positive states)
    - White:          #FFFFFF (Main page background, cards & clean content)
    - Light Blue:     #F0F5FF (Alternate sections, banners & subtle highlights)
    - Dark Slate:     #1F2937 (Headings, body copy, hero & footer backgrounds)
-   - Secondary Gray: #6B7280 (Descriptions, labels, secondary text)
-========================================================= */
+   - Secondary Gray: #6B7280 (Descriptions, labels, secondary text*/
 
 :root {
   /* Fonts (Luxury layout preserved from Homeopathy House) */
@@ -90,14 +87,21 @@ body {
 }
 
 /* Headings */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-display);
   font-weight: 600;
   letter-spacing: -0.015em;
   color: var(--dark-slate);
 }
 
-img, video, svg {
+img,
+video,
+svg {
   max-width: 100%;
   display: block;
 }
@@ -171,17 +175,27 @@ button {
 
 /* Subtle Pulsing CTA Glow for Accent Green button */
 @keyframes premium-glow {
-  0%, 100% {
+
+  0%,
+  100% {
     box-shadow: 0 0 0 0 rgba(32, 168, 120, 0.45), 0 8px 22px -6px rgba(32, 168, 120, 0.35);
   }
+
   50% {
     box-shadow: 0 0 0 10px rgba(32, 168, 120, 0), 0 14px 30px -6px rgba(32, 168, 120, 0.5);
   }
 }
 
 @keyframes gentle-scale {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.03); }
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.03);
+  }
 }
 
 .cta-glow {
@@ -194,6 +208,7 @@ button {
     opacity: 0;
     transform: translateY(18px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);

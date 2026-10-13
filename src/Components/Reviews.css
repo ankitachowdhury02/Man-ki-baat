@@ -16,7 +16,6 @@
   margin: 0 auto;
 }
 
-/* Header */
 
 .reviews-header {
   display: grid;
@@ -71,7 +70,7 @@
   line-height: 1.9;
 }
 
-/* Summary panel */
+
 
 .reviews-summary {
   min-height: 130px;
@@ -114,7 +113,7 @@
   line-height: 1.7;
 }
 
-/* Review cards */
+
 
 .reviews-grid {
   display: grid;
@@ -175,7 +174,7 @@
   white-space: pre-line;
 }
 
-/* Author */
+
 
 .review-author {
   display: flex;
@@ -218,7 +217,7 @@
   font-size: 11px;
 }
 
-/* Google Reviews CTA */
+
 
 .reviews-google-cta {
   display: flex;
@@ -265,7 +264,7 @@
   height: 18px;
 }
 
-/* Placeholder disclaimer */
+
 
 .reviews-disclaimer {
   margin: 24px 0 0;

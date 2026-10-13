@@ -1,9 +1,3 @@
-
-/* =========================================
-   MAN KI BAAT - HEADER
-   Fixed Header + Responsive Mobile Menu
-========================================= */
-
 .site-header {
   position: fixed;
   top: 0;
@@ -25,7 +19,6 @@
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Header Container */
 
 .header-container {
   width: 100%;
@@ -40,7 +33,7 @@
   gap: 20px;
 }
 
-/* Brand & Logo */
+
 
 .header-brand {
   display: flex;
@@ -92,7 +85,7 @@
   text-transform: uppercase;
 }
 
-/* Desktop Navigation */
+
 
 .header-navigation {
   display: flex;
@@ -145,13 +138,13 @@
   font-weight: 600;
 }
 
-/* Mobile Actions - Hidden on Desktop */
+
 
 .mobile-header-actions {
   display: none;
 }
 
-/* Desktop Call & Book Buttons */
+
 
 .header-desktop-actions {
   display: flex;
@@ -160,7 +153,7 @@
   flex-shrink: 0;
 }
 
-/* Call Button */
+
 
 .header-call-btn {
   display: inline-flex;
@@ -299,9 +292,7 @@
   outline-offset: 3px;
 }
 
-/* =========================================
-   LAPTOP & SMALL DESKTOP
-========================================= */
+/* Responsive */
 
 @media (max-width: 1120px) {
   .header-container {
@@ -327,9 +318,7 @@
   }
 }
 
-/* =========================================
-   TABLET & MOBILE NAVIGATION
-========================================= */
+
 
 @media (max-width: 980px) {
   .header-container {
@@ -440,9 +429,7 @@
   }
 }
 
-/* =========================================
-   MOBILE PHONE
-========================================= */
+/* Mobile phone */
 
 @media (max-width: 520px) {
   .header-container {
@@ -511,10 +498,7 @@
   }
 }
 
-/* =========================================
-   EXTRA SMALL MOBILE
-========================================= */
-
+/*  Extra Small Mobile */
 @media (max-width: 360px) {
   .header-container {
     padding-left: 10px;
@@ -551,9 +535,6 @@
   }
 }
 
-/* =========================================
-   HEADER MENU ANIMATION
-========================================= */
 
 @keyframes headerFadeDown {
   from {
@@ -567,11 +548,10 @@
   }
 }
 
-/* =========================================
-   REDUCED MOTION ACCESSIBILITY
-========================================= */
+
 
 @media (prefers-reduced-motion: reduce) {
+
   .site-header,
   .header-nav-link,
   .header-nav-link::after,
