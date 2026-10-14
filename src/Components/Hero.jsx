@@ -93,54 +93,56 @@ function Hero() {
   const slide = slides[activeSlide];
 
   return (
-    <section
-      className="hero-slider"
-      id="home"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-    >
-      {slides.map((item, index) => (
-        <div
-          key={item.image}
-          className={`hero-slide ${activeSlide === index ? "active" : ""}`}
-          style={{
-            backgroundImage: `url("${item.image}")`,
-            backgroundPosition: item.position || "center center",
-          }}
-          aria-hidden="true"
-        />
-      ))}
-
-      <div className="hero-overlay" />
-
-      <div className="hero-content-wrap" key={activeSlide}>
-        <p className="hero-eyebrow">
-          <span className="hero-eyebrow-line" />
-          {slide.eyebrow}
-        </p>
-
-        <h1 className="hero-title">{slide.title}</h1>
-
-        <p className="hero-subtitle">{slide.subtitle}</p>
-
-        <h2 className="hero-headline">{slide.headline}</h2>
-
-        <p className="hero-short-text">{slide.shortText}</p>
-
-        <p className="hero-description">{slide.description}</p>
-      </div>
-
-      <div className="hero-dots">
+    <>
+      <section
+        className="hero-slider"
+        id="home"
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+      >
         {slides.map((item, index) => (
-          <button
+          <div
             key={item.image}
-            type="button"
-            className={`hero-dot ${activeSlide === index ? "active-dot" : ""}`}
-            onClick={() => setActiveSlide(index)}
-            aria-label={`Go to slide ${index + 1}`}
+            className={`hero-slide ${activeSlide === index ? "active" : ""}`}
+            style={{
+              backgroundImage: `url("${item.image}")`,
+              backgroundPosition: item.position || "center center",
+            }}
+            aria-hidden="true"
           />
         ))}
-      </div>
+
+        <div className="hero-overlay" />
+
+        <div className="hero-content-wrap" key={activeSlide}>
+          <p className="hero-eyebrow">
+            <span className="hero-eyebrow-line" />
+            {slide.eyebrow}
+          </p>
+
+          <h1 className="hero-title">{slide.title}</h1>
+
+          <p className="hero-subtitle">{slide.subtitle}</p>
+
+          <h2 className="hero-headline">{slide.headline}</h2>
+
+          <p className="hero-short-text">{slide.shortText}</p>
+
+          <p className="hero-description">{slide.description}</p>
+        </div>
+
+        <div className="hero-dots">
+          {slides.map((item, index) => (
+            <button
+              key={item.image}
+              type="button"
+              className={`hero-dot ${activeSlide === index ? "active-dot" : ""}`}
+              onClick={() => setActiveSlide(index)}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
+      </section>
 
       <div className="hero-contact-buttons">
         <a
@@ -168,7 +170,7 @@ function Hero() {
           </svg>
         </a>
       </div>
-    </section>
+    </>
   );
 }
 
