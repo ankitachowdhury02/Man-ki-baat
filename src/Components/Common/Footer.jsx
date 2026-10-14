@@ -1,8 +1,28 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Footer.css";
 import logo from "../../assets/logo.jpeg";
 
+const services = [
+  { name: "Clinical Psychology", slug: "clinical-psychology" },
+  { name: "Child Psychology", slug: "child-psychology" },
+  { name: "Adolescent Psychology", slug: "adolescent-psychology" },
+  { name: "Educational Psychology", slug: "educational-psychology" },
+  { name: "Counselling Psychology", slug: "counselling-psychology" },
+  { name: "Neuropsychology", slug: "neuropsychology" },
+  { name: "Forensic Psychology", slug: "forensic-psychology" },
+  { name: "Health Psychology", slug: "health-psychology" },
+  { name: "Industrial & Organisational Psychology", slug: "industrial-organisational-psychology" },
+  { name: "Sports Psychology", slug: "sports-psychology" },
+  { name: "Rehabilitation Psychology", slug: "rehabilitation-psychology" },
+  { name: "Geropsychology", slug: "geropsychology" },
+  { name: "Family Psychology", slug: "family-psychology" },
+  { name: "Addiction Psychology", slug: "addiction-psychology" },
+  { name: "Community Psychology", slug: "community-psychology" },
+];
+
 function Footer() {
+  const [showAllServices, setShowAllServices] = useState(false);
   const currentYear = new Date().getFullYear();
 
   return (
@@ -33,11 +53,56 @@ function Footer() {
 
         <div className="footer-links">
           <h3>Our Services</h3>
-          <a href="#services">Personal Counselling</a>
-          <a href="#services">Relationship Guidance</a>
-          <a href="#services">Stress &amp; Anxiety Management</a>
-          <a href="#services">Child &amp; Adolescent Counselling</a>
-          <a href="#services">Cognitive Behaviour Therapy</a>
+          {services.slice(0, 5).map((service) => (
+            <Link
+              key={service.slug}
+              to={`/specialisations/${service.slug}`}
+            >
+              {service.name}
+            </Link>
+          ))}
+
+          <div
+            id="footer-more-services"
+            className={`footer-more-services ${showAllServices ? "expanded" : ""}`}
+            aria-hidden={!showAllServices}
+          >
+            <div className="footer-more-services-inner">
+              {services.slice(5).map((service) => (
+                <Link
+                  key={service.slug}
+                  to={`/specialisations/${service.slug}`}
+                  tabIndex={showAllServices ? 0 : -1}
+                >
+                  {service.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <button
+            type="button"
+            className="footer-toggle-btn"
+            onClick={() => setShowAllServices((prev) => !prev)}
+            aria-expanded={showAllServices}
+            aria-controls="footer-more-services"
+          >
+            <span>{showAllServices ? "Show Less" : "Show More"}</span>
+            <svg
+              className={`footer-toggle-icon ${showAllServices ? "expanded" : ""}`}
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </button>
         </div>
 
         <div className="footer-contact">
