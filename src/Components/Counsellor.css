@@ -914,7 +914,8 @@
 
   padding: 90px 0;
 
-  background: radial-gradient(circle at 5% 5%, rgba(48, 85, 178, 0.07), transparent 30%), linear-gradient(140deg, #f6f8ff, #ffffff 60%, #effaf5);
+  background: radial-gradient(circle at 5% 5%, rgba(48, 85, 178, 0.07), transparent 30%),
+    linear-gradient(140deg, #f6f8ff, #ffffff 60%, #effaf5);
 
 }
 
@@ -1602,9 +1603,7 @@
 
 }
 
-/* =========================================
-   COUNSELLOR PROFILE HERO VISUAL
-   ========================================= */
+
 
 .counsellor-page .counsellor-profile-visual {
   position: relative;

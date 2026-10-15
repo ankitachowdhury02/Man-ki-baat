@@ -288,16 +288,16 @@ function Counsellor() {
                         </div>
 
 
-                        {/*
-    <div className="profile-message-card message-guidance">
-        <div className="profile-message-icon blue"><Users size={22} /></div>
-        <div className="profile-message-copy">
-            <strong>Guidance for Every Stage</strong>
-            <span>Support for children and families.</span>
-        </div>
-        <span className="profile-status-dot blue-dot" />
-    </div>
-*/}
+
+                        <div className="profile-message-card message-guidance">
+                            <div className="profile-message-icon blue"><Users size={22} /></div>
+                            <div className="profile-message-copy">
+                                <strong>Guidance for Every Stage</strong>
+                                <span>Support for children and families.</span>
+                            </div>
+                            <span className="profile-status-dot blue-dot" />
+                        </div>
+
                         <div className="profile-message-card message-personal">
                             <div className="profile-message-icon green"><Sparkles size={22} /></div>
                             <div className="profile-message-copy">
